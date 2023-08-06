@@ -1,0 +1,36 @@
+Features:
+- Startup Login
+- Add/Delete Members
+- Add/Delete Books
+- Issue/Return Books
+- Late Fine
+- Views: Search for book, Inventory
+
+Additional Features/Future plans:
+- Remote search and view books
+- oauth for notifications
+- member accounts
+- qr code for issue/return user verification
+- Landing page
+
+Frontend:
+- ReactJs
+- Login page (blank and failed attempt case)
+- Home/Dashboard page
+    - Logged in user pic & logout button
+    - Manage Members button: Add, edit, delete, search&sort button, view member page
+    - Manage Book button: Add, Remove, Issue, Return, Search, confirmation page
+    - Settings button: Change sender email, default issue time period, return book reminder notification frequency, new book addition notifications
+
+Backend:
+- NodeJs
+- MySQL
+- Tables:
+    1. Members: Userid(RollNumber), Name, Password, RegistrationDate, MemberTillDate, Book Issued?, IssuedBook(BookID), ReturnBy
+    2. Inventory: ISBN, Book Name, BookID(list), onshelf(BookIDlist)
+    3. Not in library:  BookID, Userid, IssueDate, ReturnBy
+- Table:
+    1. Members table for members details
+    2. Inventory table for library and its functions
+    3. NotInLibrary table for cross checking purposes
+- BookID mechanism: 
