@@ -1,0 +1,32 @@
+.search{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    background-color: #ffffff;
+    height: 4rem;
+    border-radius: 2rem 0rem 0rem 2rem;
+}
+.search-box{
+    border: none;
+    width: 70%;
+    height: 4rem;
+    font-size: 1.3rem;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+.search button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    border: none;
+    background-color: #efc775;
+    border-radius: 0rem 2rem 2rem 0rem;
+}

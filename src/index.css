@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Noto+Sans+JP:wght@500&family=Permanent+Marker&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: rgb(0, 0, 0);
+  background: #edd0a1;
+  font-family: 'Montserrat', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.background{
+  position: fixed;
+  z-index: -1;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-image: linear-gradient(to bottom, #e2e5e7, transparent);
+}
