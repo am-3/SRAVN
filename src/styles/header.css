@@ -4,22 +4,21 @@
     background-color: #efc775;
     height: 5rem;
     width: 100%;
-    box-shadow: rgb(32, 31, 31) 0px 6px 30px 0px;
+    box-shadow: rgb(32, 31, 31) 0px 0px 10px 0px;
     position: fixed;
     z-index: 2;
 }
 
 .heading-cont {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     height: 100%;
     padding-left: 2rem;
-    padding-bottom: 0.3rem;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
 
 h1 {
-    font-family: 'Permanent Marker', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Wallpoet', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 a {
@@ -29,35 +28,42 @@ a {
 
 .navbar nav {
     display: flex;
-    height: 100%;
+    align-items: center;
     padding-right: 1.3rem;
     position: relative;
 }
 
-.navlist {
+.navlist-1 {
     display: flex;
     font-size: 1.2rem;
+    height: 60%;
     list-style-type: none;
-    font-family: 'Noto Sans JP', 'Times New Roman', Times, serif;
+    font-family: 'Inter', 'Times New Roman', Times, serif;
 }
 
-.navlist a {
+.navlist-1 a {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     height: 100%;
     width: 100%;
-    padding-bottom: 0.8rem;
+    border-radius: 2rem;
 }
 
-.navlist li {
+.navlist-1 li {
     color: aliceblue;
     width: 100px;
+    border-radius: 2rem;
 }
 
-.navlist li:hover {
-    color: rgb(255, 255, 255);
+.navlist-1 a:hover {
     background-color: #9fd253;
+}
+
+.signin-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .activate {
@@ -89,7 +95,7 @@ a {
         padding-right: 0rem;
     }
 
-    .navlist {
+    .navlist-1 {
         padding-top: 5rem;
         position: absolute;
         flex-flow: column;
@@ -103,14 +109,14 @@ a {
         top: 0px;
     }
 
-    .navlist li {
+    .navlist-1 li {
         display: flex;
         justify-content: center;
         width: 100%;
         height: 45px;
     }
 
-    .navlist a {
+    .navlist-1 a {
         align-items: center;
         padding-bottom: 0;
     }

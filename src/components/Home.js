@@ -1,7 +1,7 @@
 import React from 'react'
-import '../styles/Landing.css'
+import '../styles/Home.css'
 import SearchBox from './SearchBox'
-export default function Landing() {
+export default function Home() {
   return (
     <div className="container3">
       <div className="container2">
