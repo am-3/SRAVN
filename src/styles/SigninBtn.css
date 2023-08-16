@@ -35,14 +35,15 @@
   position: absolute;
   right: 1rem;
   top: 5rem;
-  background-color: #11af4d;
+  background-color: #028090;
+  box-shadow: rgb(32, 31, 31) 0px 2px 6px 0px;
   display: block;
   width: 17rem;
   transform-origin: top center;
 }
 
 .navlist .profile_icon {
-  background-color: #11af4d;
+  background-color: #028090;
 }
 
 .navlist_user_info {

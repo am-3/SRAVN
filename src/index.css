@@ -7,7 +7,7 @@
 
 body {
   color: rgb(0, 0, 0);
-  background: #edd0a1;
+  background: #b5c2bf;
   font-family: 'Montserrat', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -16,5 +16,5 @@ body {
   z-index: -1;
   min-height: 100vh;
   min-width: 100vw;
-  background-image: linear-gradient(to bottom, #e2e5e7, transparent);
+  background: #d0cece;
 }

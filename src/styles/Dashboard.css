@@ -1,0 +1,14 @@
+.dash-cont{
+    width: 100%;
+    padding: 2rem 1rem 1rem 1rem;
+}
+.dash-cont h2{
+    padding-left: 1rem;
+}
+.dash-cont2{
+    margin-top: 0.5rem;
+    min-height: 79vh;
+    background-color: #b3c0a6;
+    border-radius: 1rem;
+    padding: 1rem;
+}

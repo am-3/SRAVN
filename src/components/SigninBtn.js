@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import img from "../img/img_411076.png";
 import {Link} from 'react-router-dom'
 import '../styles/SigninBtn.css';
@@ -8,6 +8,22 @@ export default function SigninBtn() {
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
   const [display, setDisplay] = useState(false);
 
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      const user_info = document.querySelector(".navlist_user_info")
+      const btn = document.querySelector(".profile-btn")
+      if (display && !user_info.contains(event.target) && !btn.contains(event.target)) {
+        setDisplay(false);
+      }
+    };
+
+    document.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, [display]);
+  
   function toggleMenu() {
     setDisplay(prev => !prev);
   }
@@ -44,7 +60,7 @@ export default function SigninBtn() {
               </div>
               <div className='navlist-links'>
                 <button>
-                  <Link to ='/dashboard'><p>Dashboard</p></Link>
+                  <Link to ='/account'><p>Manage Account</p></Link>
                 </button>
                 <button
                   onClick={() =>

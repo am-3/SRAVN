@@ -1,0 +1,32 @@
+.dash-layout{
+    display: flex;
+    padding-top: 5rem;
+    min-height: 100vh;
+}
+.sidebar-menu{
+    padding-top: 1rem;
+    width: 20%;
+    z-index: 1;
+    box-shadow: rgb(32, 31, 31) -4px 0px 10px 0px
+}
+.sidebar-menu ul{
+    display: flex;
+    padding: 0.5rem;
+    flex-direction: column;
+    height: 100%;
+    list-style-type: none;
+}
+.sidebar-menu li{
+    height: 50px;
+}
+.sidebar-menu a{
+    height: 100%;
+    display: flex;
+    padding-left: 0.5rem;
+    gap: 10px;
+    border-radius: 0.5rem;
+    align-items: center;
+}
+.sidebar-menu a:hover{
+    background-color: #a5cb7c;
+}
