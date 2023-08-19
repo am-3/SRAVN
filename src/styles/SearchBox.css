@@ -27,7 +27,7 @@ textarea:focus, input:focus{
     justify-content: center;
     width: 5rem;
     border: none;
-    background-color: #b8f261;
+    background-color: rgb(158, 234, 99);
     border-radius: 0rem 2rem 2rem 0rem;
 }
 

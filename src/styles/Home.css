@@ -1,6 +1,5 @@
 .container3 {
-    min-height: 100vh;
-    padding-top: 5rem;
+    min-height: 89vh;
 }
 
 .container2 {
@@ -10,6 +9,17 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
+}
+
+.background {
+    position: fixed;
+    z-index: -1;
+    top: 0px;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/Kat-05.jpg');
 }
 
 .container2 p:nth-child(1) {

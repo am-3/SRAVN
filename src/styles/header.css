@@ -1,12 +1,10 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    background-color: #DB5461;
+    background-color: transparent;
     height: 5rem;
     width: 100%;
-    box-shadow: rgb(32, 31, 31) 0px 0px 6px 0px;
-    position: fixed;
-    z-index: 2;
+    position: sticky;
 }
 
 .heading-cont {
@@ -14,7 +12,7 @@
     align-items: center;
     height: 100%;
     padding-left: 2rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 h1 {
@@ -35,7 +33,7 @@ a {
 
 .navlist-1 {
     display: flex;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     height: 60%;
     list-style-type: none;
     font-family: 'Inter', 'Times New Roman', Times, serif;
@@ -57,7 +55,7 @@ a {
 }
 
 .navlist-1 a:hover {
-    background-color: #9fd253;
+    background-color: #8cf469;
 }
 
 .signin-btn{
@@ -67,7 +65,7 @@ a {
 }
 
 .activate {
-    background-color: #85c327;
+    background-color: #7bf154;
 }
 
 @keyframes showMenu {

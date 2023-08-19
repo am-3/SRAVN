@@ -3,12 +3,84 @@
     padding: 2rem 1rem 1rem 1rem;
 }
 .dash-cont h2{
-    padding-left: 1rem;
+    padding-left: 20px;
 }
 .dash-cont2{
+    display: grid;
     margin-top: 0.5rem;
     min-height: 79vh;
-    background-color: #b3c0a6;
+    background-color: #f5f6fa;
     border-radius: 1rem;
+    padding: 20px;
+    gap: 20px;
+}
+.overview ul{
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+.overview li{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color:#ffff;
+    border: 2px solid #edf2f6;
+    border-radius: 3px;
+    width: 230px;
+    height: 90px;
+}
+
+.overview li div{
+    text-align: end;
+}
+
+.charts{
+    display: flex;
+    gap: 20px;
+}
+.charts section{
+    padding-left: 2rem;
+    background-color:#ffff;
+    border: 2px solid #edf2f6;
+    border-radius: 3px;
+    height: 300px;
+}
+
+.report1{
+    width: 40%;
+}
+.report2{
+    width: 60%;
+}
+
+.new{
+    display: flex;
+    gap: 20px;
+    height: 50vh;
+}
+
+.new h4{
     padding: 1rem;
+    text-align: center;
+}
+.new section{
+    background-color:#ffff;
+    border: 2px solid #edf2f6;
+    border-radius: 3px;
+    overflow-y: scroll;
+    width: 50%;
+}
+
+.new ul{
+    list-style-type: none;
+    display: flex;
+    padding:  0 1rem 1rem 1rem;
+    flex-direction: column;
+}
+
+.new li{
+    background-color:#ffff;
+    border: 2px solid #edf2f6;
+    border-radius: 3px;
+    height: 2rem;
 }

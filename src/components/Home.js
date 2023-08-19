@@ -4,6 +4,7 @@ import SearchBox from './SearchBox'
 export default function Home() {
   return (
     <div className="container3">
+      <div className="background"></div>
       <div className="container2">
         <p>Welcome to <b>SRAVN</b>, your library assistant</p>
         <SearchBox/>
