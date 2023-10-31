@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+}
+
+#navbar {
+    background-color: rgb(2, 135, 135);
+
+    width: 100%;
+    height: 150px;
+
+    position: fixed;
+}
+
+#nav-up {
+    background-color: aqua;
+
+    width: 100%;
+    height: 50px;
+
+    position: fixed;
+
+    text-align: center;
+}
+
+#nav-up > p {
+    /* border: 1px solid; */
+    font-size: 40px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    position: relative;
+    margin: 0;
+
+}
+
+#hall-types {
+    border: 1px solid;
+
+    position: relative;
+    top: 50%;
+    left: 10%;
+
+    margin: 0;
+}
+
+#hall-subtypes {
+    border: 1px solid;
+
+    position: relative;
+    top: 50%;
+    left: 30%;
+
+    margin: 0;
+}
