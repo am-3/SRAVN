@@ -1,3 +1,5 @@
+const MAX_VIEW_LIMIT = 90; // Including today
+
 function updateSecondDropdown() {
     var hallTypes = document.getElementById("hall-types");
     var hallSubtypes = document.getElementById("hall-subtypes");
@@ -5,6 +7,8 @@ function updateSecondDropdown() {
 
     var defaultOption = hallTypes.options[0];
     defaultOption.disabled = true;
+
+    hallSubtypes.hidden = false;
 
     // Clear previous options
     hallSubtypes.innerHTML = "";
@@ -28,3 +32,15 @@ function addOption(selectElement, value, text) {
     option.text = text;
     selectElement.add(option);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var today = new Date();
+    today.setDate(today.getDate() + 1);
+
+    var maxDate = new Date(today);
+    maxDate.setDate(today.getDay() + MAX_VIEW_LIMIT - 1);
+
+    var calendarDate = document.getElementById('calendar-date');
+    calendarDate.setAttribute('min', today.toISOString().split('T')[0]);
+    calendarDate.setAttribute('max', maxDate.toISOString().split('T')[0]);
+});
