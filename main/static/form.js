@@ -82,10 +82,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Disable all past dates
         const minDate = new Date();
-        minDate.setDate(currentDate.getDate() - 1); // Disable past dates
+        minDate.setHours(0, 0, 0, 0); // Set the time to midnight
+        minDate.setDate(currentDate.getDate() + 1); // Disable past dates
 
-        const maxDate = new Date(currentDate);
+
+        const maxDate = new Date();
+        maxDate.setHours(0, 0, 0, 0); // Set the time to midnight
         maxDate.setMonth(currentDate.getMonth() + MAX_DATE_LIMIT); // Set maximum allowed date
+
 
         dateInput.min = minDate.toISOString().split("T")[0];
         dateInput.max = maxDate.toISOString().split("T")[0];
@@ -188,7 +192,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    dateInput.addEventListener("change", updateStartTimeEndTimeOptions);
+    dateInput.addEventListener("change", function () {
+        updateStartTimeEndTimeOptions();
+        const currentDate = new Date();
+        const selectedDate = new Date(dateInput.value);
+        
+        if (selectedDate < currentDate) {
+            dateInput.value = '';
+            alert('Please select a future date.');
+        }
+    });
 
     updateStartTimeEndTimeOptions(); // Call this function initially
 
