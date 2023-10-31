@@ -30,8 +30,20 @@ label {
 
 input[type="text"],
 textarea,
-input[type="file"] {
+input[type="file"],
+input[type="email"] {
     width: 95%;
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    background-color: #f9f9f9;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+select {
+    width: 99%;
     padding: 7px;
     border: 1px solid #ccc;
     border-radius: 5px;

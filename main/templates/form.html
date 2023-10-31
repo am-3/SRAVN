@@ -4,8 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <link rel="stylesheet" href="../static/form.css" type="text/css">
-        <script src="../static/form.js"></script>
+        <link rel="stylesheet" type="text/css" href="form.css" />
     </head>
     <body>
         <form id="eventForm">
@@ -79,13 +78,36 @@
             </div>
 
             <div class="form-group" id="divMargin">
-                <label for="eventCoordinator">Event Coordinator (faculty) details:</label>
+                <label for="eventCoordinatorName"
+                    >Event Coordinator Details</label
+                >
                 <input
                     type="text"
-                    id="eventCoordinator"
-                    name="eventCoordinator"
+                    id="eventCoordinatorName"
+                    name="eventCoordinatorName"
+                    placeholder="Enter faculty name"
                     required
                 />
+                <label for="eventCoordinatorEmail"></label>
+                <input
+                    type="email"
+                    id="eventCoordinatorEmail"
+                    name="eventCoordinatorEmail"
+                    placeholder="Enter faculty email"
+                    pattern=".*@iiitt.ac.in"
+                    title="Please enter an email address of iiitt domain."
+                    required
+                />
+                <label for="eventCoordinatorDept"></label>
+                <select
+                    name="eventCoordinatorDept"
+                    id="eventCoordinatorDept"
+                    required
+                >
+                    <option value="" selected disabled>Select Department</option>
+                    <option value="CSE">CSE</option>
+                    <option value="ECE">ECE</option>
+                </select>
             </div>
 
             <div class="form-group">
