@@ -3,7 +3,10 @@ from django.http import HttpResponse
 
 # Create your views here.
 #Request Handler
-def say_hello(request):
+def start(request):
+    return render(request, 'main.html')
+
+def nav(request):
     return render(request, 'navbar.html')
 
 def form(request):
