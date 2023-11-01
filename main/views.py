@@ -11,3 +11,6 @@ def nav(request):
 
 def form(request):
     return render(request, 'form.html')
+
+def table(request):
+    return render(request, 'allocation.html')
