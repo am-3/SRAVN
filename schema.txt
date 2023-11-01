@@ -8,6 +8,7 @@ Additional Features/Future plans:
 - Automated reminders for events
 - only certain students would be able to request hall, club coordinator etc
 - recurring events
+- preferences: light/dark mode, artificial delay for clicks
 
 Frontend:
 - Home
