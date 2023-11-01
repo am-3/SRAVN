@@ -196,8 +196,12 @@ document.addEventListener("DOMContentLoaded", function () {
         updateStartTimeEndTimeOptions();
         const currentDate = new Date();
         const selectedDate = new Date(dateInput.value);
-        
+        selectedDate.setHours(24, 0, 0, 0);
+        console.log(currentDate, selectedDate);
+
         if (selectedDate < currentDate) {
+            console.log(currentDate);
+            console.log(selectedDate);
             dateInput.value = '';
             alert('Please select a future date.');
         }
