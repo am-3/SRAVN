@@ -36,20 +36,28 @@ body {
     border: 1px solid;
 
     position: relative;
-    top: 50%;
+    top: 60%;
     left: 10%;
 
     margin: 0;
+
+    width: 300px;
+
+    text-align: center;
 }
 
 #hall-subtypes {
     border: 1px solid;
 
     position: relative;
-    top: 50%;
-    left: 30%;
+    top: 60%;
+    left: 20%;
 
     margin: 0;
+
+    width: 300px;
+
+    text-align: center;
 }
 
 .calendar {
@@ -57,14 +65,17 @@ body {
     align-items: center;
 
     border: 1px solid;
+    border-radius: 10px;
 
     background-color: #444;
 
-    width: 130px;
+    width: 300px;
+
+    text-align: center;
 
     position: relative;
-    top: 50%;
-    left: 50%;
+    top: 45%;
+    left: 70%;
 }
 
 input[type="date"] {
@@ -72,5 +83,9 @@ input[type="date"] {
     border: none;
     background-color: #444;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 10px;
+
+    width: 300px;
+
+    text-align: center;
 }
