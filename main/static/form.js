@@ -1,10 +1,9 @@
 // Global variables for time constraints
-const MIN_START_TIME = "09:00";
+const MIN_START_TIME = "01:00";
 const MAX_START_TIME = "21:30";
-const MIN_END_TIME = "09:30";
+const MIN_END_TIME = "01:30";
 const MAX_END_TIME = "22:00";
 const MAX_DATE_LIMIT = 3; // Maximum allowed months from today
-
 
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("eventForm");
@@ -34,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
         hallNumbers.appendChild(deleteButton);
     });
 
-
     addDateButton.addEventListener("click", function () {
         const dateGroup = document.createElement("div");
         dateGroup.classList.add("date-time-group");
@@ -55,6 +53,9 @@ document.addEventListener("DOMContentLoaded", function () {
         dateGroup.appendChild(deleteButton);
 
         eventDates.appendChild(dateGroup);
+
+        // Update time slots based on the selected date
+        updateStartTimeEndTimeOptions();
     });
 
     // Function to handle the selection of start and end times
@@ -62,11 +63,31 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedStartTime = startTimeSelect.value;
         const selectedEndTime = endTimeSelect.value;
 
-        if (selectedStartTime >= selectedEndTime) {
-            // Ensure the end time is after the start time
+        const parsedStartTime = parseTime(selectedStartTime);
+        const parsedEndTime = parseTime(selectedEndTime);
+
+        if (parsedStartTime >= parsedEndTime) {
             alert("End time must be after the start time.");
             startTimeSelect.value = ""; // Clear the selected start time
         }
+    }
+
+    function parseTime(timeString) {
+        let result;
+        // Split the time string into hours and minutes
+        const [time, period] = timeString.split(" ");
+        let [hours, minutes] = time.split(":").map(Number);
+
+        // Adjust hours for PM if needed
+        if (period === "PM" && hours < 12) {
+            hours += 12;
+        }
+
+        // Create a Date object with the adjusted hours and minutes
+        result = new Date();
+        result.setHours(hours, minutes, 0, 0);
+
+        return result;
     }
 
     startTimeSelect.addEventListener("change", handleTimeSelection);
@@ -82,23 +103,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Disable all past dates
         const minDate = new Date();
-        minDate.setHours(0, 0, 0, 0); // Set the time to midnight
-        minDate.setDate(currentDate.getDate() + 1); // Disable past dates
-
+        minDate.setHours(0, 0, 0, 0);
+        minDate.setDate(currentDate.getDate() + 1);
 
         const maxDate = new Date();
-        maxDate.setHours(0, 0, 0, 0); // Set the time to midnight
-        maxDate.setMonth(currentDate.getMonth() + MAX_DATE_LIMIT); // Set maximum allowed date
-
+        maxDate.setHours(0, 0, 0, 0);
+        maxDate.setMonth(currentDate.getMonth() + MAX_DATE_LIMIT);
 
         dateInput.min = minDate.toISOString().split("T")[0];
         dateInput.max = maxDate.toISOString().split("T")[0];
 
         if (isSameDate(currentDate, selectedDate)) {
-            // Adjust time slots for today's date based on the current time
             updateTodayTimeSlots(currentDate);
         } else {
-            // Use global time constraints for other valid dates
             updateGlobalTimeSlots();
         }
     }
@@ -112,49 +129,55 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateTodayTimeSlots(currentDate) {
-        // Adjust start time based on the current time
-        const currentTimeHours = currentDate.getHours();
-        const currentTimeMinutes = currentDate.getMinutes();
-
-        // Round current time to the nearest half-hour
-        const adjustedMinutes = Math.ceil(currentTimeMinutes / 30) * 30;
-        const startHour = currentTimeHours + Math.floor(adjustedMinutes / 60);
-        const startMinute = adjustedMinutes % 60;
-
-        // Set the minimum and maximum start times
-        const minStartTime = new Date(currentDate);
-        minStartTime.setHours(startHour, startMinute);
-
-        const maxStartTime = new Date(currentDate);
-        maxStartTime.setHours(21, 30);
-
-        // Set the minimum and maximum end times
-        const minEndTime = new Date(currentDate);
-        minEndTime.setHours(startHour, startMinute + 30);
-
-        const maxEndTime = new Date(currentDate);
-        maxEndTime.setHours(22, 0);
-
-        // Populate start time options
-        while (minStartTime <= maxStartTime) {
-            const timeString = minStartTime.toLocaleTimeString("en-US", {
-                hour: "2-digit",
-                minute: "2-digit",
-            });
-            startTimeSelect.add(new Option(timeString, timeString));
-            minStartTime.setMinutes(minStartTime.getMinutes() + 30);
-        }
-
-        // Populate end time options
-        while (minEndTime <= maxEndTime) {
-            const timeString = minEndTime.toLocaleTimeString("en-US", {
-                hour: "2-digit",
-                minute: "2-digit",
-            });
-            endTimeSelect.add(new Option(timeString, timeString));
-            minEndTime.setMinutes(minEndTime.getMinutes() + 30);
+        const now = new Date();
+        if (currentDate.toDateString() === now.toDateString()) {
+            // Today is selected, and the date is the same as the current date
+            // Calculate the nearest next near future slot
+            const currentTime = new Date();
+            let nearestNextSlot = new Date(currentTime);
+    
+            const minStartTime = parseTime(MIN_START_TIME);
+            const minEndTime = parseTime(MIN_END_TIME);
+            const maxStartTime = parseTime(MAX_START_TIME);
+            const maxEndTime = parseTime(MAX_END_TIME);
+    
+            if (currentTime <= minStartTime) {
+                nearestNextSlot = minStartTime;
+            } else if (currentTime >= minEndTime && currentTime <= maxStartTime) {
+                nearestNextSlot = new Date(Math.ceil(currentTime / 1800000) * 1800000); // Round up to the next 30 minutes
+            } else if (currentTime >= maxStartTime) {
+                nearestNextSlot = maxEndTime;
+            }
+    
+            // Populate start time options
+            let startTime = new Date(nearestNextSlot);
+            while (startTime <= maxStartTime) {
+                const timeString = startTime.toLocaleTimeString("en-US", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                });
+                startTimeSelect.add(new Option(timeString, timeString));
+                startTime.setMinutes(startTime.getMinutes() + 30);
+            }
+    
+            // Populate end time options=
+            console.log("AHHSAs",nearestNextSlot);
+            let endTime = new Date(nearestNextSlot);
+            while (endTime <= maxEndTime) {
+                const timeString = endTime.toLocaleTimeString("en-US", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                });
+                endTimeSelect.add(new Option(timeString, timeString));
+                endTime.setMinutes(endTime.getMinutes() + 30);
+            }
+        } else {
+            // Date is not today, use global time constraints
+            updateGlobalTimeSlots();
         }
     }
+    
+    
 
     function updateGlobalTimeSlots() {
         let startTime = new Date();
@@ -197,11 +220,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const currentDate = new Date();
         const selectedDate = new Date(dateInput.value);
         selectedDate.setHours(24, 0, 0, 0);
-        console.log(currentDate, selectedDate);
 
         if (selectedDate < currentDate) {
-            console.log(currentDate);
-            console.log(selectedDate);
             dateInput.value = '';
             alert('Please select a future date.');
         }
