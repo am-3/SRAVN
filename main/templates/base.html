@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block title %}
+      <title> Hall Booking System</title>
+    {% endblock %}
+    <meta charset="utf-8" />
+    
+    <!-- Add additional CSS in static file -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+  </head>
+  <body>
+    <div class="container-fluid">
+          {% block content %}
+          {% endblock %}
+
+          {% block navbar %}
+          {% endblock %}
+    </div>
+  </body>
+</html>
