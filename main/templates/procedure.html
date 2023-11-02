@@ -1,7 +1,45 @@
 {% extends "base.html" %} {% block content %}
 
+<style>
+    #procedurestuff, h1, h3, p, a {
+        margin: 0;
+        padding: 0;
+    }
+
+    #procedurestuff {
+        font-family: Arial, sans-serif;
+        background-color: #d9d9d9;
+        padding-left: 10px;
+    }
+
+    h1 {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    h4{
+        padding: 10px;
+    }
+
+    p {
+        margin: 10px 0;
+        padding: 10px;
+    }
+
+    a {
+        color: #0078d4;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
 <h1>Instructions for Filling Event Request Form</h1>
 
+<div id="procedurestuff">
 <h4>
     This page provides step-by-step instructions for filling out the
     <a href="./form">Event Request Form</a>. Please follow these guidelines to
@@ -73,5 +111,6 @@
 </p>
 
 <p><a href="./form">Click here</a> to fill out the Event Request Form</p>
+</div>
 
 {% endblock %}
