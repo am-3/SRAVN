@@ -1,11 +1,67 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    {% block title %}
-      <title> Hall Booking System</title>
+
+<head>
+  {% block title %}
+  <title> Hall Booking System</title>
+  {% endblock %}
+  <meta charset="utf-8" />
+
+  <!-- Add additional CSS in static file -->
+  <link rel="stylesheet"  type="text/css" href="{% static '../static/allocation.css' %}">
+  <link rel="stylesheet"  type="text/css" href="{% static '../static/form.css' %}">
+  <link rel="stylesheet"  type="text/css" href="{% static '../static/navbar.css' %}">
+  <script defer type="text/javascript" src="{% static '../static/navbar.js' %}"></script>
+  <script defer type="text/javascript" src="{% static '../static/form.js' %}"></script>
+  <script defer type="text/javascript" src="{% static '../static/allocation.js' %}"></script>
+</head>
+
+<body>
+  <div class="container-fluid">
+
+    {% block navbar %}
+    <div id="navbar">
+      <div id="nav-up">
+        <p>IIIT Trichy Hall Booking</p>
+      </div>
+      <div id = "nav-down">
+        <select name="hall-types" id="hall-types" onchange="updateSecondDropdown()">
+            <option selected value="">Select Hall Type</option>
+            <option value="Classrooms">Classrooms</option>
+            <option value="Seminar Halls">Seminar Halls</option>
+            <option value="Meeting Halls">Meeting Halls</option>
+        </select>
+        <select name="hall-subtypes" id="hall-subtypes" hidden>
+        </select>
+        <div class="calendar">
+            <input type="date" id="calendar-date">
+        </div>
+    </div>
+    </div>
     {% endblock %}
-    <meta charset="utf-8" />
-  </head>
-  <body>
-  </body>
+
+    {% block content %}
+      <h1>Local Library Home</h1>
+      <p>
+        Welcome to LocalLibrary, a website developed by
+        <em>Mozilla Developer Network</em>!
+      </p>
+      <h2>Dynamic content</h2>
+      <p>The library has the following record counts:</p>
+      <ul>
+        <li><strong>Books:</strong> {{ num_books }}</li>
+        <li><strong>Copies:</strong> {{ num_instances }}</li>
+        <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
+        <li><strong>Authors:</strong> {{ num_authors }}</li>
+      </ul>
+      <button>
+        <a href="/table">Get started</a>
+      </button>
+    {% endblock %}
+
+  </div>
+</body>
+
 </html>
