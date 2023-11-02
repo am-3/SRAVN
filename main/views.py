@@ -24,3 +24,6 @@ def form(request):
 
 def table(request):
     return render(request, 'allocation.html')
+
+def procedure(request):
+    return render(request, 'procedure.html')

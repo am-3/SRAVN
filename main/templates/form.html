@@ -1,35 +1,62 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 
 {% block navbar %}
 <div id="nav-up">
     <p>IIIT Trichy Hall Booking</p>
 </div>
-{% endblock %}
+{% endblock %} 
 
 {% block content %}
-
 <form id="eventForm">
     <h1>Event Request Form</h1>
 
     <div class="form-group">
-        <label for="halls">Halls required (room numbers):</label>
+        <label for="halls">Venue(s)</label>
+        <!-- Hall(s) required -->
         <div id="hallNumbers">
-            <input type="text" name="halls" required />
+            <select id="hallSelect" name="halls" required>
+                <option value="" selected disabled hidden>
+                    Select Room Number
+                </option>
+            </select>
         </div>
-        <button id="addHall">Add Hall</button>
+        <button id="addHall">Add Venue</button>
+        <div id="hallTemplate" style="display: none">
+            <select name="halls" required>
+                <option value="" selected disabled hidden>
+                    Select Room Number
+                </option>
+            </select>
+        </div>
     </div>
 
     <div class="form-group">
-        <label for="eventName">Name of the event:</label>
-        <input type="text" id="eventName" name="eventName" required />
+        <label for="eventName">Name of the event</label>
+        <input
+            type="text"
+            id="eventName"
+            name="eventName"
+            required
+            placeholder="Enter name of the event"
+        />
     </div>
 
     <div class="form-group">
-        <label for="eventDates">Date(s) of the programme:</label>
+        <label for="eventDates">Date(s) of the event</label>
         <div id="eventDates">
             <div class="date-time-group">
-                <input type="date" name="dates" id="dateInput" required />
-                <select id="startTimeSelect" name="startTimes" required></select>
+                <input
+                    type="date"
+                    name="dates"
+                    id="dateInput"
+                    title="Select date"
+                    required
+                />
+                <select
+                    id="startTimeSelect"
+                    name="startTimes"
+                    required
+                ></select>
                 <select id="endTimeSelect" name="endTimes" required></select>
             </div>
         </div>
@@ -37,8 +64,15 @@
     </div>
 
     <div class="form-group">
-        <label for="purpose">Purpose (long description):</label>
-        <textarea id="purpose" name="purpose" rows="5" wrap="hard" required></textarea>
+        <label for="purpose">Event Description</label>
+        <textarea
+            id="purpose"
+            name="purpose"
+            rows="5"
+            wrap="hard"
+            required
+            placeholder="Write description of your event"
+        ></textarea>
     </div>
 
     <div class="form-group">
@@ -57,34 +91,53 @@
 
     <div class="form-group" id="divMargin">
         <label for="eventCoordinatorName">Event Coordinator Details</label>
-        <input type="text" id="eventCoordinatorName" name="eventCoordinatorName" placeholder="Enter faculty name"
-            required />
+        <input
+            type="text"
+            id="eventCoordinatorName"
+            name="eventCoordinatorName"
+            placeholder="Enter faculty name"
+            required
+        />
         <label for="eventCoordinatorEmail"></label>
-        <input type="email" id="eventCoordinatorEmail" name="eventCoordinatorEmail" placeholder="Enter faculty email"
-            pattern=".*@iiitt.ac.in" title="Please enter an email address of iiitt domain." required />
+        <input
+            type="email"
+            id="eventCoordinatorEmail"
+            name="eventCoordinatorEmail"
+            placeholder="Enter faculty email"
+            pattern=".*@iiitt.ac.in"
+            title="Please enter an email address of iiitt domain."
+            required
+        />
         <label for="eventCoordinatorDept"></label>
         <select name="eventCoordinatorDept" id="eventCoordinatorDept" required>
-            <option value="" selected disabled>Select Department</option>
+            <option value="" selected disabled hidden>Select Department</option>
             <option value="CSE">CSE</option>
             <option value="ECE">ECE</option>
         </select>
     </div>
 
     <div class="form-group">
-        <label for="undertaking">By checking the box below, I take complete responsibility
-            of taking care of all the electronic / non-electronic items
-            in the hall / room.</label>
+        <label for="undertaking"
+            >By checking the box below, I take complete responsibility of taking
+            care of all the electronic/non-electronic items in the
+            hall/room.</label
+        >
         <input type="checkbox" id="undertaking" name="undertaking" required />
     </div>
 
     <div class="form-group" id="divMargin">
-        <label for="sanctionLetter">Upload PDF of sanction letter:</label>
-        <input type="file" id="sanctionLetter" name="sanctionLetter" accept=".pdf" required />
+        <label for="sanctionLetter">PDF of sanction letter</label>
+        <input
+            type="file"
+            id="sanctionLetter"
+            name="sanctionLetter"
+            accept=".pdf"
+            required
+        />
     </div>
 
     <div class="form-group">
         <input type="submit" value="Submit" />
     </div>
 </form>
-
 {% endblock %}

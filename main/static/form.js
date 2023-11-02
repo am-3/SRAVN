@@ -1,9 +1,11 @@
 // Global variables for time constraints
-const MIN_START_TIME = "01:00";
+const MIN_START_TIME = "09:00";
 const MAX_START_TIME = "21:30";
-const MIN_END_TIME = "01:30";
+const MIN_END_TIME = "09:30";
 const MAX_END_TIME = "22:00";
 const MAX_DATE_LIMIT = 3; // Maximum allowed months from today
+
+const ROOM_NUMBERS_LIST = ["101", "102", "103", "104"];
 
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("eventForm");
@@ -16,21 +18,39 @@ document.addEventListener("DOMContentLoaded", function () {
     const hallNumbers = document.getElementById("hallNumbers");
     const addHallButton = document.getElementById("addHall");
 
-    addHallButton.addEventListener("click", function () {
-        const input = document.createElement("input");
-        input.type = "text";
-        input.name = "halls";
-        input.required = true;
+    const hallSelect = document.getElementById("hallSelect");
+    const hallTemplate = document.getElementById("hallTemplate");
+    // Populate the hallSelect dropdown with options from ROOM_NUMBERS_LIST
+    ROOM_NUMBERS_LIST.forEach((roomNumber) => {
+        const option = new Option(roomNumber, roomNumber);
+        hallSelect.appendChild(option);
+    });
 
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Remove Hall";
-        deleteButton.addEventListener("click", function () {
-            hallNumbers.removeChild(input);
-            hallNumbers.removeChild(deleteButton);
+    addHallButton.addEventListener("click", function () {
+        const newHallSelect = hallTemplate.cloneNode(true);
+        newHallSelect.removeAttribute("style"); // Make the cloned dropdown visible
+    
+        // Populate the cloned dropdown with options
+        hallSelect.querySelectorAll("option").forEach(function (option) {
+            const clonedOption = document.createElement("option");
+            clonedOption.value = option.value;
+            clonedOption.text = option.text;
+            if(option.hidden == true)
+            {
+                clonedOption.hidden=true;
+            }
+            newHallSelect.querySelector("select").appendChild(clonedOption);
         });
 
-        hallNumbers.appendChild(input);
-        hallNumbers.appendChild(deleteButton);
+        // Add a "Remove Hall" button for the new hall
+        const removeHallButton = document.createElement("button");
+        removeHallButton.textContent = "Remove Venue";
+        removeHallButton.addEventListener("click", function () {
+            hallNumbers.removeChild(newHallSelect);
+        });
+    
+        newHallSelect.appendChild(removeHallButton);
+        hallNumbers.appendChild(newHallSelect);
     });
 
     addDateButton.addEventListener("click", function () {
@@ -128,6 +148,11 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     }
 
+    var startTimeOption = new Option("Start time", "", true, true);
+    startTimeOption.hidden = "true";
+
+    var endTimeOption = new Option("End time", "", true, true);
+    endTimeOption.hidden = "true";
     function updateTodayTimeSlots(currentDate) {
         const now = new Date();
         if (currentDate.toDateString() === now.toDateString()) {
@@ -135,20 +160,25 @@ document.addEventListener("DOMContentLoaded", function () {
             // Calculate the nearest next near future slot
             const currentTime = new Date();
             let nearestNextSlot = new Date(currentTime);
-    
+
             const minStartTime = parseTime(MIN_START_TIME);
             const minEndTime = parseTime(MIN_END_TIME);
             const maxStartTime = parseTime(MAX_START_TIME);
             const maxEndTime = parseTime(MAX_END_TIME);
-    
+
             if (currentTime <= minStartTime) {
                 nearestNextSlot = minStartTime;
-            } else if (currentTime >= minEndTime && currentTime <= maxStartTime) {
-                nearestNextSlot = new Date(Math.ceil(currentTime / 1800000) * 1800000); // Round up to the next 30 minutes
+            } else if (
+                currentTime >= minEndTime &&
+                currentTime <= maxStartTime
+            ) {
+                nearestNextSlot = new Date(
+                    Math.ceil(currentTime / 1800000) * 1800000
+                ); // Round up to the next 30 minutes
             } else if (currentTime >= maxStartTime) {
                 nearestNextSlot = maxEndTime;
             }
-    
+
             // Populate start time options
             let startTime = new Date(nearestNextSlot);
             while (startTime <= maxStartTime) {
@@ -159,10 +189,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 startTimeSelect.add(new Option(timeString, timeString));
                 startTime.setMinutes(startTime.getMinutes() + 30);
             }
-    
+
             // Populate end time options=
-            console.log("AHHSAs",nearestNextSlot);
+            console.log("ASAs", nearestNextSlot);
             let endTime = new Date(nearestNextSlot);
+            endTime.setMinutes(endTime.getMinutes() + 30);
+            console.log("Endtime", endTime);
             while (endTime <= maxEndTime) {
                 const timeString = endTime.toLocaleTimeString("en-US", {
                     hour: "2-digit",
@@ -171,13 +203,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 endTimeSelect.add(new Option(timeString, timeString));
                 endTime.setMinutes(endTime.getMinutes() + 30);
             }
+            startTimeSelect.add(startTimeOption);
+            endTimeSelect.add(endTimeOption);
         } else {
             // Date is not today, use global time constraints
             updateGlobalTimeSlots();
         }
     }
-    
-    
 
     function updateGlobalTimeSlots() {
         let startTime = new Date();
@@ -213,6 +245,9 @@ document.addEventListener("DOMContentLoaded", function () {
             endTimeSelect.add(new Option(timeString, timeString));
             endTime.setMinutes(endTime.getMinutes() + 30);
         }
+
+        startTimeSelect.add(startTimeOption);
+        endTimeSelect.add(endTimeOption);
     }
 
     dateInput.addEventListener("change", function () {
@@ -222,8 +257,8 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedDate.setHours(24, 0, 0, 0);
 
         if (selectedDate < currentDate) {
-            dateInput.value = '';
-            alert('Please select a future date.');
+            dateInput.value = "";
+            alert("Please select a future date.");
         }
     });
 
