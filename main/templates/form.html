@@ -1,148 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link rel="stylesheet" type="text/css" href="../static/form.css">
-        <script defer type="text/javascript" src="../static/form.js"></script>
-        
+{% extends "base.html" %}
 
-    </head>
-    <body>
-        <form id="eventForm">
-            <h1>Event Request Form</h1>
+{% block navbar %}
+<div id="nav-up">
+    <p>IIIT Trichy Hall Booking</p>
+</div>
+{% endblock %}
 
-            <div class="form-group">
-                <label for="halls">Halls required (room numbers):</label>
-                <div id="hallNumbers">
-                    <input type="text" name="halls" required />
-                </div>
-                <button id="addHall">Add Hall</button>
+{% block content %}
+
+<form id="eventForm">
+    <h1>Event Request Form</h1>
+
+    <div class="form-group">
+        <label for="halls">Halls required (room numbers):</label>
+        <div id="hallNumbers">
+            <input type="text" name="halls" required />
+        </div>
+        <button id="addHall">Add Hall</button>
+    </div>
+
+    <div class="form-group">
+        <label for="eventName">Name of the event:</label>
+        <input type="text" id="eventName" name="eventName" required />
+    </div>
+
+    <div class="form-group">
+        <label for="eventDates">Date(s) of the programme:</label>
+        <div id="eventDates">
+            <div class="date-time-group">
+                <input type="date" name="dates" id="dateInput" required />
+                <select id="startTimeSelect" name="startTimes" required></select>
+                <select id="endTimeSelect" name="endTimes" required></select>
             </div>
+        </div>
+        <button id="addDate">Add Date</button>
+    </div>
 
-            <div class="form-group">
-                <label for="eventName">Name of the event:</label>
-                <input type="text" id="eventName" name="eventName" required />
-            </div>
+    <div class="form-group">
+        <label for="purpose">Purpose (long description):</label>
+        <textarea id="purpose" name="purpose" rows="5" wrap="hard" required></textarea>
+    </div>
 
-            <div class="form-group">
-                <label for="eventDates">Date(s) of the programme:</label>
-                <div id="eventDates">
-                    <div class="date-time-group">
-                        <input
-                            type="date"
-                            name="dates"
-                            id="dateInput"
-                            required
-                        />
-                        <select
-                            id="startTimeSelect"
-                            name="startTimes"
-                            required
-                        ></select>
-                        <select
-                            id="endTimeSelect"
-                            name="endTimes"
-                            required
-                        ></select>
-                    </div>
-                </div>
-                <button id="addDate">Add Date</button>
-            </div>
+    <div class="form-group">
+        <label for="audioSystem">
+            <input type="checkbox" id="audioSystem" name="audioSystem" />
+            Check here if you require Audio System.
+        </label>
+    </div>
 
-            <div class="form-group">
-                <label for="purpose">Purpose (long description):</label>
-                <textarea
-                    id="purpose"
-                    name="purpose"
-                    rows="5"
-                    wrap="hard"
-                    required
-                ></textarea>
-            </div>
+    <div class="form-group">
+        <label for="projector">
+            <input type="checkbox" id="projector" name="projector" />
+            Check here if you require Projector.
+        </label>
+    </div>
 
-            <div class="form-group">
-                <label for="audioSystem">
-                    <input
-                        type="checkbox"
-                        id="audioSystem"
-                        name="audioSystem"
-                    />
-                    Check here if you require Audio System.
-                </label>
-            </div>
+    <div class="form-group" id="divMargin">
+        <label for="eventCoordinatorName">Event Coordinator Details</label>
+        <input type="text" id="eventCoordinatorName" name="eventCoordinatorName" placeholder="Enter faculty name"
+            required />
+        <label for="eventCoordinatorEmail"></label>
+        <input type="email" id="eventCoordinatorEmail" name="eventCoordinatorEmail" placeholder="Enter faculty email"
+            pattern=".*@iiitt.ac.in" title="Please enter an email address of iiitt domain." required />
+        <label for="eventCoordinatorDept"></label>
+        <select name="eventCoordinatorDept" id="eventCoordinatorDept" required>
+            <option value="" selected disabled>Select Department</option>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+        </select>
+    </div>
 
-            <div class="form-group">
-                <label for="projector">
-                    <input type="checkbox" id="projector" name="projector" />
-                    Check here if you require Projector.
-                </label>
-            </div>
+    <div class="form-group">
+        <label for="undertaking">By checking the box below, I take complete responsibility
+            of taking care of all the electronic / non-electronic items
+            in the hall / room.</label>
+        <input type="checkbox" id="undertaking" name="undertaking" required />
+    </div>
 
-            <div class="form-group" id="divMargin">
-                <label for="eventCoordinatorName"
-                    >Event Coordinator Details</label
-                >
-                <input
-                    type="text"
-                    id="eventCoordinatorName"
-                    name="eventCoordinatorName"
-                    placeholder="Enter faculty name"
-                    required
-                />
-                <label for="eventCoordinatorEmail"></label>
-                <input
-                    type="email"
-                    id="eventCoordinatorEmail"
-                    name="eventCoordinatorEmail"
-                    placeholder="Enter faculty email"
-                    pattern=".*@iiitt.ac.in"
-                    title="Please enter an email address of iiitt domain."
-                    required
-                />
-                <label for="eventCoordinatorDept"></label>
-                <select
-                    name="eventCoordinatorDept"
-                    id="eventCoordinatorDept"
-                    required
-                >
-                    <option value="" selected disabled>Select Department</option>
-                    <option value="CSE">CSE</option>
-                    <option value="ECE">ECE</option>
-                </select>
-            </div>
+    <div class="form-group" id="divMargin">
+        <label for="sanctionLetter">Upload PDF of sanction letter:</label>
+        <input type="file" id="sanctionLetter" name="sanctionLetter" accept=".pdf" required />
+    </div>
 
-            <div class="form-group">
-                <label for="undertaking"
-                    >By checking the box below, I take complete responsibility
-                    of taking care of all the electronic / non-electronic items
-                    in the hall / room.</label
-                >
-                <input
-                    type="checkbox"
-                    id="undertaking"
-                    name="undertaking"
-                    required
-                />
-            </div>
+    <div class="form-group">
+        <input type="submit" value="Submit" />
+    </div>
+</form>
 
-            <div class="form-group" id="divMargin">
-                <label for="sanctionLetter"
-                    >Upload PDF of sanction letter:</label
-                >
-                <input
-                    type="file"
-                    id="sanctionLetter"
-                    name="sanctionLetter"
-                    accept=".pdf"
-                    required
-                />
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Submit" />
-            </div>
-        </form>
-    </body>
-</html>
+{% endblock %}

@@ -1,31 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}
     <title>IIIT Trichy Hall Booking</title>
-    <link rel="stylesheet" type='text/css' href="../static/allocation.css">
-    <script defer type="text/javascript" src="../static/allocation.js"></script>
-</head>
+{% endblock %}
 
-<body>
-    <table>
-        <thead>
-            <tr class="thead-row">
-                <th class="time-cell">Start Time</th>
-            </tr>
-        </thead>
-        <tbody>
-        
-        </tbody>
-        <tfoot>
-            <tr class="tfoot-row">
-              <th scope="row">Legend</th>
-            </tr>
-          </tfoot>
-    </table>
-</body>
+{% block content %}
 
-</html>
+<table>
+    <thead>
+        <tr class="thead-row">
+            <th class="time-cell">Start Time</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+    <tfoot>
+        <tr class="tfoot-row">
+            <th scope="row">Legend</th>
+        </tr>
+    </tfoot>
+</table>
+
+{% endblock %}
