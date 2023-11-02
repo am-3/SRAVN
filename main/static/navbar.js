@@ -73,13 +73,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Function to submit the form data
 function submitForm() {
-    var formData = new FormData();
+    var formData = new FormData(document.getElementById('myForm'));
     formData.append('hall_types', document.getElementById('hall-types').value);
     formData.append('hall_subtypes', document.getElementById('hall-subtypes').value);
     formData.append('date_input', document.getElementById('calendar-date').value);
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/your_backend_url/');
+    xhr.open('POST', '/table');
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.onload = function() {
         if (xhr.status === 200) {
@@ -88,6 +88,12 @@ function submitForm() {
     };
     xhr.send(formData);
 }
+
+// Event listener for form submission
+// document.getElementById('myForm').addEventListener('submit', function(event) {
+//     event.preventDefault(); // Prevent the default form submission behavior
+//     submitForm(); // Call the submitForm function
+// });
 
 // Event listener for dropdown change
 document.getElementById('hall-types').addEventListener('change', submitForm);

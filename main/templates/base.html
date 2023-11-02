@@ -24,22 +24,23 @@
     {% block navbar %}
     <div id="navbar">
       <div id="nav-up">
-        <p>IIIT Trichy Hall Booking</p>
+          <p>IIIT Trichy Hall Booking</p>
       </div>
-      <div id = "nav-down">
-        <select name="hall-types" id="hall-types" onchange="updateSecondDropdown()">
-            <option selected value="">Select Hall Type</option>
-            <option value="Classrooms">Classrooms</option>
-            <option value="Seminar Halls">Seminar Halls</option>
-            <option value="Meeting Halls">Meeting Halls</option>
-        </select>
-        <select name="hall-subtypes" id="hall-subtypes" disabled>
-        </select>
-        <div class="calendar">
-            <input type="date" id="calendar-date">
-        </div>
-    </div>
-    </div>
+          <div id = "nav-down">
+              <form id="myForm" method="post">
+                  {% csrf_token %}
+                  <select name="hall-types" id="hall-types" onchange="updateSecondDropdown()">
+                      <option selected value="">Select Hall Type</option>
+                      <option value="Classrooms">Classrooms</option>
+                      <option value="Seminar Halls">Seminar Halls</option>
+                      <option value="Meeting Halls">Meeting Halls</option>
+                  </select>
+                  <select name="hall-subtypes" id="hall-subtypes" disabled>
+                  </select>
+                  <input name="calendar-date" type="date" id="calendar-date">
+              </form>
+          </div>
+  </div>
     {% endblock %}
 
     {% block content %}

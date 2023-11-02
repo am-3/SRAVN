@@ -23,6 +23,13 @@ def form(request):
     return render(request, 'form.html')
 
 def table(request):
+    print(1)
+    hall_type = request.POST.get('hall-types')
+    hall_subtype = request.POST.get('hall-subtypes')
+    date_val = request.POST.get('calendar-date')
+    print(hall_type)
+    print(hall_subtype)
+    print(date_val)
     return render(request, 'allocation.html')
 
 def procedure(request):

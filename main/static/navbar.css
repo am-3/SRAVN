@@ -60,21 +60,6 @@ body {
     text-align: center;
 }
 
-.calendar {
-    display: flex;
-    align-items: center;
-
-    border: 1px solid;
-    border-radius: 10px;
-
-    background-color: #444;
-
-    width: 300px;
-
-    text-align: center;
-
-}
-
 #calendar-date {
     padding: 5px;
     border: none;
