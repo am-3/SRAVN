@@ -126,6 +126,10 @@ const fillData = () => {
     endTime.setHours(18, 0, 0, 0); // End at 6:00 PM
 
     // Fill tbody
+
+    // Initialize an array to keep track of slot availability
+    const slotsAvailable = Array(allocation.length).fill(true)
+
     const tbody = document.querySelector("tbody");
     while (startTime < endTime) {
         const tr = document.createElement("tr");
@@ -137,7 +141,13 @@ const fillData = () => {
 
             // check if event time is in slot
             if (startTime >= venueStartTime && startTime <= venueEndTime) {
-                
+                //making sure that for each booking, eventName is printed only once
+                if (!slotsAvailable[i]) continue;
+                if (startTime.getTime() === venueStartTime.getTime()) {
+                    td.textContent = allocation[i].eventName;
+                    const slotsSpanned = 1 + Math.ceil((venueEndTime - venueStartTime) / (30 * 60 * 1000));
+                    td.setAttribute("rowspan", slotsSpanned);
+                }
                 //applying specific colors based on eventType
                 const type = allocation[i].eventType;
                 switch (type) {
@@ -165,11 +175,7 @@ const fillData = () => {
                         break;
                 }
                 
-
-                //making sure that for each booking, eventName is printed only once
-                if(startTime.getTime() === venueStartTime.getTime()){
-                    td.textContent = allocation[i].eventName
-                }
+                slotsAvailable[i] = false;
 
                 td.addEventListener("click", function () {
                     // Navigate to another page (replace 'URL' with the actual URL)
