@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Function to submit the form data
 function submitForm() {
+    event.preventDefault();
     var formData = new FormData(document.getElementById('myForm'));
     formData.append('hall_types', document.getElementById('hall-types').value);
     formData.append('hall_subtypes', document.getElementById('hall-subtypes').value);
@@ -96,8 +97,10 @@ function submitForm() {
 // });
 
 // Event listener for dropdown change
-document.getElementById('hall-types').addEventListener('change', submitForm);
+// document.getElementById('hall-types').addEventListener('change', submitForm);
 
-// Event listener for date input change
-document.getElementById('hall-subtypes').addEventListener('change', submitForm);
-document.getElementById('calendar-date').addEventListener('change', submitForm);
+// // Event listener for date input change
+// document.getElementById('hall-subtypes').addEventListener('change', submitForm);
+// document.getElementById('calendar-date').addEventListener('change', submitForm);
+
+document.getElementById('submit-btn').addEventListener('click', submitForm);

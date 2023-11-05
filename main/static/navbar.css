@@ -71,3 +71,11 @@ body {
 
     text-align: center;
 }
+
+#submit-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    background-color: red;
+}
