@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google'
+    'allauth.socialaccount.providers.google',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -150,3 +151,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'main\\static')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+GRAPH_MODELS ={
+'all_applications': True,
+'graph_models': True,
+}

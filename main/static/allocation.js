@@ -3,8 +3,8 @@ const legends = ['Event Approved', 'Lecture', 'Seminar', 'Meeting', 'Event Pendi
 const allocation = [
     {
         venue: "Hall 1",
-        startDate: "2023-11-02",
-        endDate: "2023-11-02",
+        startDate: "2023-11-06",
+        endDate: "2023-11-06",
         startTime: "12:00:00",
         endTime: "13:00:00",
         eventName: "cs201",
@@ -12,8 +12,8 @@ const allocation = [
     },
     {
         venue: "Hall 2",
-        startDate: "2023-11-02",
-        endDate: "2023-11-02",
+        startDate: "2023-11-06",
+        endDate: "2023-11-06",
         startTime: "12:00",
         endTime: "13:00",
         eventName: "cs515",
@@ -21,8 +21,8 @@ const allocation = [
     },
     {
         venue: "Hall 3",
-        startDate: "2023-11-02",
-        endDate: "2023-11-02",
+        startDate: "2023-11-06",
+        endDate: "2023-11-06",
         startTime: "13:00",
         endTime: "14:00",
         eventName: "Razor",
@@ -30,8 +30,8 @@ const allocation = [
     },
     {
         venue: "Hall 4",
-        startDate: "2023-11-02",
-        endDate: "2023-11-02",
+        startDate: "2023-11-06",
+        endDate: "2023-11-06",
         startTime: "14:00",
         endTime: "16:00",
         eventName: "Razor",
@@ -39,8 +39,8 @@ const allocation = [
     },
     {
         venue: "Hall 5",
-        startDate: "2023-11-02",
-        endDate: "2023-11-02",
+        startDate: "2023-11-06",
+        endDate: "2023-11-06",
         startTime: "16:30",
         endTime: "17:30",
         eventName: "Razor",
@@ -48,8 +48,8 @@ const allocation = [
     },
     {
         venue: "Hall 6",
-        startDate: "2023-11-02",
-        endDate: "2023-11-02",
+        startDate: "2023-11-06",
+        endDate: "2023-11-06",
         startTime: "16:30",
         endTime: "17:30",
         eventName: "Razor",
@@ -57,8 +57,8 @@ const allocation = [
     },
     {
         venue: "Hall 7",
-        startDate: "2023-11-02",
-        endDate: "2023-11-02",
+        startDate: "2023-11-06",
+        endDate: "2023-11-06",
         startTime: "16:30",
         endTime: "17:30",
         eventName: "Razor",
@@ -66,8 +66,8 @@ const allocation = [
     },
     {
         venue: "Hall 8",
-        startDate: "2023-11-02",
-        endDate: "2023-11-02",
+        startDate: "2023-11-06",
+        endDate: "2023-11-06",
         startTime: "16:30",
         endTime: "17:30",
         eventName: "Razor",
