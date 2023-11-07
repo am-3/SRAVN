@@ -5,7 +5,7 @@ body {
 
 #eventForm {
     width: 500px;
-    margin: 0 auto;
+    margin: 2rem auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -55,7 +55,7 @@ input[type="email"] {
 }
 
 select {
-    width: 99%;
+    width: 95%;
     padding: 7px;
     border: 1px solid #ccc;
     border-radius: 5px;

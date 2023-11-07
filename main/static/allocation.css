@@ -1,5 +1,5 @@
 :root {
-    --primary-background-color: #3f87a6;
+    --primary-background-color: #0d648c;
     --primary-text-color: #fff;
     --secondary-background-color: #e4f0f5;
     --border-color: rgb(200, 200, 200);
@@ -16,7 +16,14 @@
     margin: 0;
     box-sizing: border-box;
 }
-
+.allocation-spot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-background-color);
+    font-size: 30px;
+    height: 50px;
+}
 table {
     border-collapse: collapse;
     border-left: 1px solid var(--border-color); 
@@ -36,7 +43,7 @@ tbody {
     display: block;
     background-color: var(--secondary-background-color);
     overflow: scroll;
-    height: 50vh;
+    height: 72vh;
 }
 
 tbody tr:nth-child(even) {
@@ -64,4 +71,52 @@ th {
     background-color: var(--hover-color);
     cursor: pointer;
     text-decoration: underline;
+}
+
+/* Popup */
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: var(--secondary-background-color);
+    padding: 40px 80px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    position: relative;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.event-details{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.event-details h2{
+    text-align: center;
+    text-decoration: underline;
+    padding-bottom: 1rem;
+}
+.event-details span{
+    font-weight: bold;
+}
+.event-details p {
+    display: flex;
+    justify-content: space-between;
 }

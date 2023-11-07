@@ -1,0 +1,61 @@
+/* Reset some default browser styles */
+#aboutDiv, #aboutH1, #aboutH2, #aboutPara, #aboutUL, #aboutOL,#aboutList {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a background color and text color for the body */
+#aboutDiv {
+    background-color: #f3f3f3;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the header with a background color and text color */
+#aboutHeader {
+    background-color: #0074b3;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Add spacing and padding for the main content */
+#aboutMain {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style headings */
+#aboutH2 {
+    color: #0074b3;
+    margin-top: 20px;
+}
+
+/* Style lists */
+#aboutUL, #aboutOL {
+    margin: 15px;
+    margin-left: 20px;
+}
+
+#aboutPara {
+    margin-top: 20px;
+}
+
+/* Style the footer */
+#aboutFooter {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #0074b3;
+    color: #fff;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    #aboutMain {
+        padding: 10px;
+    }
+}
