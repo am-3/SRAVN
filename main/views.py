@@ -34,3 +34,6 @@ def table(request):
 
 def procedure(request):
     return render(request, 'procedure.html')
+
+def about(request):
+    return render(request, 'about.html')
