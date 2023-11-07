@@ -20,6 +20,20 @@ def nav(request):
     return render(request, 'navbar.html')
 
 def form(request):
+    print(2)
+    halls = request.POST.get('halls')
+    hallsChild = request.POST.get('hallsChild')
+    ctr = request.POST.get('Counter')
+    if ctr != None:
+        if int(ctr) > 1:
+            print(ctr)
+            for i in range(1, int(ctr)+1):
+                print(request.POST.get(f'hallsChild{i}'))
+    eventName = request.POST.get('eventName')
+    dates = request.POST.get('dates')
+    startTimes = request.POST.get('startTimes')
+    endTimes = request.POST.get('endTimes')
+    print(f"{halls}\n{eventName}\n{dates}\n{startTimes}\n{endTimes}")
     return render(request, 'form.html')
 
 def table(request):

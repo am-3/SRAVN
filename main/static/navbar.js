@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Function to submit the form data
 function submitForm() {
-    event.preventDefault();
+    // event.preventDefault();
     var formData = new FormData(document.getElementById('myForm'));
     formData.append('hall_types', document.getElementById('hall-types').value);
     formData.append('hall_subtypes', document.getElementById('hall-subtypes').value);

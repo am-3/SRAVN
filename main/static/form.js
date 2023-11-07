@@ -7,6 +7,8 @@ const MAX_DATE_LIMIT = 3; // Maximum allowed months from today
 
 const ROOM_NUMBERS_LIST = ["101", "102", "103", "104"];
 
+var ctr = 0;
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("eventForm");
     const eventDates = document.getElementById("eventDates");
@@ -27,8 +29,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     addHallButton.addEventListener("click", function () {
+        ctr = ctr + 1;
         const newHallSelect = hallTemplate.cloneNode(true);
         newHallSelect.removeAttribute("style"); // Make the cloned dropdown visible
+        const elementInside = newHallSelect.querySelector('select');
+        elementInside.id = `hallNumber${ctr}`;
+        elementInside.setAttribute('name', `hallsChild${ctr}`);
     
         // Populate the cloned dropdown with options
         hallSelect.querySelectorAll("option").forEach(function (option) {
@@ -269,3 +275,38 @@ document.addEventListener("DOMContentLoaded", function () {
         // Add your form submission logic here
     });
 });
+
+function submitForm() {
+    // event.preventDefault();
+    var formData = new FormData(document.getElementById('eventForm'));
+    formData.append('halls', document.getElementById('hallSelect').value);
+    formData.append('hallsChild', document.getElementById('hallNumber').value);
+    for (let i = 1; i <= ctr; i++){
+        formData.append(`hallsChild${i}`, document.getElementById(`hallNumber${i}`).value);
+    }
+    formData.append('eventName', document.getElementById('eventName').value);
+    formData.append('dates', document.getElementById('dateInput').value);
+    formData.append('startTimes', document.getElementById('startTimeSelect').value);
+    formData.append('endTimes', document.getElementById('endTimeSelect').value);
+    formData.append('purpose', document.getElementById('purpose').value);
+    formData.append('audioSystem', document.getElementById('audioSystem').value);
+    formData.append('projector', document.getElementById('projector').value);
+    formData.append('eventCoordinatorName', document.getElementById('eventCoordinatorName').value);
+    formData.append('eventCoordinatorEmail', document.getElementById('eventCoordinatorEmail').value);
+    formData.append('eventCoordinatorDept', document.getElementById('eventCoordinatorDept').value);
+    formData.append('undertaking', document.getElementById('undertaking').value);
+    formData.append('sanctionLetter', document.getElementById('sanctionLetter').value);
+    formData.append('Counter', ctr);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/form');
+    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Handle successful response (if needed)
+        }
+    };
+    xhr.send(formData);
+}
+
+document.getElementById('submit-btn').addEventListener('click', submitForm);
