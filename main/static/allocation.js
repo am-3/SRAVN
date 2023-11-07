@@ -3,79 +3,117 @@ const legends = ['Event Approved', 'Lecture', 'Seminar', 'Meeting', 'Event Pendi
 const allocation = [
     {
         venue: "Hall 1",
-        startDate: "2023-11-06",
-        endDate: "2023-11-06",
+        startDate: "2023-11-07",
+        endDate: "2023-11-07",
         startTime: "12:00:00",
         endTime: "13:00:00",
         eventName: "cs201",
-        eventType:"Seminar"
+        eventType: "Seminar"
     },
     {
         venue: "Hall 2",
-        startDate: "2023-11-06",
-        endDate: "2023-11-06",
+        startDate: "2023-11-07",
+        endDate: "2023-11-07",
         startTime: "12:00",
         endTime: "13:00",
         eventName: "cs515",
-        eventType:"Seminar"
+        eventType: "Seminar"
     },
     {
         venue: "Hall 3",
-        startDate: "2023-11-06",
-        endDate: "2023-11-06",
+        startDate: "2023-11-07",
+        endDate: "2023-11-07",
         startTime: "13:00",
         endTime: "14:00",
         eventName: "Razor",
-        eventType:"Seminar"
+        eventType: "Seminar"
     },
     {
         venue: "Hall 4",
-        startDate: "2023-11-06",
-        endDate: "2023-11-06",
+        startDate: "2023-11-07",
+        endDate: "2023-11-07",
         startTime: "14:00",
         endTime: "16:00",
         eventName: "Razor",
-        eventType:"Seminar"
+        eventType: "Seminar"
     },
     {
         venue: "Hall 5",
-        startDate: "2023-11-06",
-        endDate: "2023-11-06",
+        startDate: "2023-11-07",
+        endDate: "2023-11-07",
         startTime: "16:30",
         endTime: "17:30",
         eventName: "Razor",
-        eventType:"Seminar"
+        eventType: "Seminar"
     },
     {
         venue: "Hall 6",
-        startDate: "2023-11-06",
-        endDate: "2023-11-06",
+        startDate: "2023-11-07",
+        endDate: "2023-11-07",
         startTime: "16:30",
         endTime: "17:30",
         eventName: "Razor",
-        eventType:"Seminar"
+        eventType: "Seminar"
     },
     {
         venue: "Hall 7",
-        startDate: "2023-11-06",
-        endDate: "2023-11-06",
+        startDate: "2023-11-07",
+        endDate: "2023-11-07",
         startTime: "16:30",
         endTime: "17:30",
         eventName: "Razor",
-        eventType:"Seminar"
+        eventType: "Seminar"
     },
     {
         venue: "Hall 8",
-        startDate: "2023-11-06",
-        endDate: "2023-11-06",
+        startDate: "2023-11-07",
+        endDate: "2023-11-07",
         startTime: "16:30",
         endTime: "17:30",
         eventName: "Razor",
-        eventType:"Seminar"
+        eventType: "Seminar"
     },
 
 ]
+function showPopup(eventDetails) {
+    const popup = document.createElement("div");
+    popup.classList.add("popup")
+    popup.innerHTML = `
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">
+                <img src = "../static/img/cross.png" width=20px height=20px/>
+            </span>
+            <div class='event-details'>
+                <h2>Event Details</h2>
+                <p><span>Venue:</span> ${eventDetails.venue}</p>
+                <p><span>Start Date:</span> ${eventDetails.startDate}</p>
+                <p><span>End Date:</span> ${eventDetails.endDate}</p>
+                <p><span>Start Time:</span> ${eventDetails.startTime}</p>
+                <p><span>End Time:</span> ${eventDetails.endTime}</p>
+                <p><span>Event Name:</span> ${eventDetails.eventName}</p>
+                <p><span>Event Type:</span> ${eventDetails.eventType}</p>
+            </div>
+        </div>
 
+    `
+    document.body.appendChild(popup);
+    // Add a click event listener to the document to close the popup when clicked outside
+    document.addEventListener("click", function (e) {
+        const popupBox = popup.querySelector(".popup-content")
+        if (!popupBox.contains(e.target) && !e.target.classList.contains("popup")) {
+            console.log(e.target)
+            // closePopup();
+        }
+    });
+}
+
+// Add a function to close the popup
+function closePopup() {
+    const popup = document.querySelector(".popup");
+    if (popup) {
+        popup.remove();
+    }
+}
 const fillData = () => {
     // Fill thead and tfoot
     const theadRow = document.querySelector(".thead-row");
@@ -95,23 +133,23 @@ const fillData = () => {
             case 'Event Approved':
                 td.style.background = '#6dd9c4'
                 break;
-        
+
             case 'Lecture':
                 td.style.background = '#86a723'
                 break;
-        
+
             case 'Seminar':
                 td.style.background = '#ffff99'
                 break;
-        
+
             case 'Meeting':
                 td.style.background = '#99cccc'
                 break;
-        
+
             case 'Event Pending':
                 td.style.background = '#ccffcc'
                 break;
-        
+
             default:
                 break;
         }
@@ -154,44 +192,50 @@ const fillData = () => {
                     case 'Event Approved':
                         td.style.background = '#6dd9c4'
                         break;
-                
+
                     case 'Lecture':
                         td.style.background = '#86a723'
                         break;
-                
+
                     case 'Seminar':
                         td.style.background = '#ffff99'
                         break;
-                
+
                     case 'Meeting':
                         td.style.background = '#99cccc'
                         break;
-                
+
                     case 'Event Pending':
                         td.style.background = '#ccffcc'
                         break;
-                
+
                     default:
                         break;
                 }
-                
+
                 slotsAvailable[i] = false;
 
                 td.addEventListener("click", function () {
-                    // Navigate to another page (replace 'URL' with the actual URL)
-                    setTimeout(function () {
-                        window.location.href = '/event';
-                    }, 100);
+                    const eventDetails = {
+                        venue: "Hall 2",
+                        startDate: "2023-11-07",
+                        endDate: "2023-11-07",
+                        startTime: "12:00",
+                        endTime: "13:00",
+                        eventName: "cs515",
+                        eventType: "Seminar"
+                    }
+                    showPopup(eventDetails);
                 });
             }
             else {
 
-                td.style.textAlign='center';
+                td.style.textAlign = 'center';
                 const svgImg = document.createElement("img");
                 svgImg.src = "../static/img/plus.svg";
                 svgImg.style.width = "15px";
-                svgImg.style.height = "15px"; 
-                
+                svgImg.style.height = "15px";
+
                 td.appendChild(svgImg);
 
                 td.addEventListener("click", function () {
