@@ -14,6 +14,10 @@
   <link rel="stylesheet" type="text/css" href="{% static '../static/form.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static '../static/navbar.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static '../static/about.css' %}">
+
+  <script>
+    var Classrooms_list = JSON.parse("{{ Classrooms_list|escapejs|safe }}");
+  </script>
   <script defer type="text/javascript" src="{% static '../static/navbar.js' %}"></script>
   <script defer type="text/javascript" src="{% static '../static/form.js' %}"></script>
   <script defer type="text/javascript" src="{% static '../static/allocation.js' %}"></script>
@@ -27,22 +31,22 @@
       <div id="nav-up">
         <a href='/'>Hall Booking System</a>
       </div>
-      <div id="nav-down">
-        <form id="myForm" method="post">
-          {% csrf_token %}
-          <select name="hall-types" id="hall-types" onchange="updateSecondDropdown()">
-            <option selected value="">Select Hall Type</option>
-            <option value="Classrooms">Classrooms</option>
-            <option value="Seminar Halls">Seminar Halls</option>
-            <option value="Meeting Halls">Meeting Halls</option>
-          </select>
-          <select name="hall-subtypes" id="hall-subtypes" disabled>
-          </select>
-          <input name="calendar-date" type="date" id="calendar-date">
-          <button id="submit-btn">Submit</button>
-        </form>
-      </div>
-    </div>
+          <div id = "nav-down">
+              <form id="myForm" method="post">
+                  {% csrf_token %}
+                  <select name="hall-types" id="hall-types" onchange="updateSecondDropdown()">
+                      <option selected value="">Select Hall Type</option>
+                      <option value="Classrooms">Classrooms</option>
+                      <option value="Seminar Halls">Seminar Halls</option>
+                      <option value="Meeting Halls">Meeting Halls</option>
+                  </select>
+                  <select name="hall-subtypes" id="hall-subtypes" disabled>
+                  </select>
+                  <input name="calendar-date" type="date" id="calendar-date">
+                  <input name="submit-btn" type="submit" id="submit-btn">
+              </form>
+          </div>
+  </div>
     {% endblock %}
 
     {% block content %}

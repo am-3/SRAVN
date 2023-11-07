@@ -1,23 +1,57 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from main.models import *
+import json
 
 # Create your views here.
 #Request Handler
 def start(request):
-    template = loader.get_template('base.html')
     context = {
-        'user' : {
-            'username' : 'hey there lol'
+            'Classrooms_list' : [],
+            'Seminar Halls' : [],
+            'Meeting Rooms' : []
         }
-    }
-    return HttpResponse(template.render(context, request))
+    
+    set_a = venue_details.objects.filter(venue_room__startswith='1')
+    set_b = venue_details.objects.filter(venue_room__startswith='2')
+    set_c = venue_details.objects.filter(venue_room__startswith='3')
+    
+    for row in set_a:
+        context['Classrooms_list'].append(str(row.venue_room) + ': ' + row.venue_details)
+    for row in set_b:
+        context['Seminar Halls'].append(str(row.venue_room) + ': ' + row.venue_details)
+    for row in set_c:
+        context['Meeting Rooms'].append(str(row.venue_room) + ': ' + row.venue_details)
+    print(type(context['Classrooms_list']))
+    context['Classrooms_list'] = json.dumps(context['Classrooms_list'])
+    print(type(context['Classrooms_list']))
+    return render(request, 'base.html', context)
 
 def hello(request):
     return render(request, 'hello.html')
 
 def nav(request):
-    return render(request, 'navbar.html')
+    context = {
+        'Classrooms_list' : [],
+        'Seminar Halls' : [],
+        'Meeting Rooms' : []
+    }
+    
+    set_a = venue_details.objects.filter(venue_room__startswith='1')
+    set_b = venue_details.objects.filter(venue_room__startswith='2')
+    set_c = venue_details.objects.filter(venue_room__startswith='3')
+    
+    for row in set_a:
+        context['Classrooms_list'].append(str(row.venue_room) + ': ' + row.venue_details)
+    for row in set_b:
+        context['Seminar Halls'].append(str(row.venue_room) + ': ' + row.venue_details)
+    for row in set_c:
+        context['Meeting Rooms'].append(str(row.venue_room) + ': ' + row.venue_details)
+    print(type(context['Classrooms_list']))
+    context['Classrooms_list'] = json.dumps(context['Classrooms_list'])
+    print(type(context['Classrooms_list']))
+    return render(request, 'navbar.html', context)
 
 def form(request):
     print(2)
@@ -44,7 +78,16 @@ def table(request):
     print(hall_type)
     print(hall_subtype)
     print(date_val)
+
+    #Query
+    #query filter 
+
+    #result format
+
     return render(request, 'allocation.html')
+
+
+
 
 def procedure(request):
     return render(request, 'procedure.html')
