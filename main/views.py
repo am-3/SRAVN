@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
 from main.models import *
 import json
+import os
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 
 #Helper Functions
 def load_nav(context):
@@ -53,39 +56,50 @@ def nav(request):
     return render(request, 'navbar.html', context)
 
 def form(request):
-    print(2)
-    halls = request.POST.get('halls')
-    eventName = request.POST.get('eventName')
-    dates = request.POST.get('dates')
-    startTimes = request.POST.get('startTimes')
-    endTimes = request.POST.get('endTimes')
+    if request.method == 'POST':
+        print(2)
+        halls = request.POST.get('halls')
+        eventName = request.POST.get('eventName')
+        dates = request.POST.get('dates')
+        startTimes = request.POST.get('startTimes')
+        endTimes = request.POST.get('endTimes')
 
-    hall_ctr = request.POST.get('hall_ctr')
-    if hall_ctr != None:
-        if int(hall_ctr) >= 1:
-            print(hall_ctr)
-            for i in range(1, int(hall_ctr)+1):
-                print(request.POST.get(f'hallsChild{i}'))
+        hall_ctr = request.POST.get('hall_ctr')
+        if hall_ctr != None:
+            if int(hall_ctr) >= 1:
+                print(hall_ctr)
+                for i in range(1, int(hall_ctr)+1):
+                    print(request.POST.get(f'hallsChild{i}'))
 
-    date_ctr = request.POST.get('date_ctr')
-    if date_ctr != None:
-        if int(date_ctr) >= 1:
-            print(date_ctr)
-            for i in range(1, int(date_ctr)+1):
-                print(request.POST.get(f'dates{i}'))
-                print(request.POST.get(f'startTimes{i}'))
-                print(request.POST.get(f'endTimes{i}'))
-        
-    purpose = request.POST.get('purpose')
-    audioSystem = request.POST.get('audioSystem')
-    projector = request.POST.get('projector')
-    eventCoordinatorName = request.POST.get('eventCoordinatorName')
-    eventCoordinatorEmail = request.POST.get('eventCoordinatorEmail')
-    eventCoordinatorDept = request.POST.get('eventCoordinatorDept')
-    undertaking = request.POST.get('undertaking')
-    sanctionLetter = request.POST.get('sanctionLetter')
+        date_ctr = request.POST.get('date_ctr')
+        if date_ctr != None:
+            if int(date_ctr) >= 1:
+                print(date_ctr)
+                for i in range(1, int(date_ctr)+1):
+                    print(request.POST.get(f'dates{i}'))
+                    print(request.POST.get(f'startTimes{i}'))
+                    print(request.POST.get(f'endTimes{i}'))
+            
+        purpose = request.POST.get('purpose')
+        audioSystem = request.POST.get('audioSystem')
+        projector = request.POST.get('projector')
+        eventCoordinatorName = request.POST.get('eventCoordinatorName')
+        eventCoordinatorEmail = request.POST.get('eventCoordinatorEmail')
+        eventCoordinatorDept = request.POST.get('eventCoordinatorDept')
+        undertaking = request.POST.get('undertaking')
+        sanctionLetter = request.POST.get('sanctionLetter')
 
-    print(f"halls: {halls}\neventName: {eventName}\ndates: {dates}\nstartTimes: {startTimes}\nendTimes: {endTimes}\npurpose: {purpose}\naudioSystem: {audioSystem}\nprojector: {projector}\neventCoordinatorName: {eventCoordinatorName}\neventCoordinatorEmail: {eventCoordinatorEmail}\neventCoordinatorDept: {eventCoordinatorDept}\nundertaking: {undertaking}\nsanctionLetter: {sanctionLetter}\n")
+        # For handling the upload of the PDF file
+
+        sanctionLetterName = 'sanction_letter'
+
+        file = request.FILES['sanctionLetter']
+        file_path = os.path.join(settings.STATIC_ROOT, sanctionLetterName)
+        fs = FileSystemStorage(location=file_path)
+        fs.save(f'{sanctionLetterName}.pdf', file)
+            
+
+        print(f"halls: {halls}\neventName: {eventName}\ndates: {dates}\nstartTimes: {startTimes}\nendTimes: {endTimes}\npurpose: {purpose}\naudioSystem: {audioSystem}\nprojector: {projector}\neventCoordinatorName: {eventCoordinatorName}\neventCoordinatorEmail: {eventCoordinatorEmail}\neventCoordinatorDept: {eventCoordinatorDept}\nundertaking: {undertaking}\nsanctionLetter: {sanctionLetter}\n")
     return render(request, 'form.html')
 
 def table(request):
