@@ -2,9 +2,8 @@ const MAX_VIEW_LIMIT = 90; // Including today
 
 //var Classrooms = ['1xx: IInd CSE', '1xx: IInd ECE', '1xx: IIIrd ECE', '1xx: IIIrd ECE' ];
 var Classrooms = Classrooms_list;
-console.log(Classrooms)
-var Seminar_Halls = ['2xx: Sudha Murty Hall', '2xx: Seminar Hall-II', '2xx: Seminar Hall-III'];
-var Meeting_Halls = ['3xx: Meeting Hall-I', '3xx: Meeting Hall-II', '3xx: Meeting Hall-III', '3xx: Meeting Hall-IV', '3xx: Meeting Hall-V' ];
+var Seminar_Halls = SeminarHalls_list;
+var Meeting_Halls = MeetingHalls_list;
 
 function updateSecondDropdown() {
     var hallTypes = document.getElementById("hall-types");
