@@ -53,6 +53,10 @@
     color: #fff;
 }
 
+#aboutList {
+    padding: 10px;
+}
+
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     #aboutMain {
