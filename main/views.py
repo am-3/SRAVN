@@ -30,7 +30,35 @@ def load_nav(context):
 
     return context
 
-def load_table(context):
+def load_table(context, hall_type="Seminar Halls", hall_subtype="210: Sudha Murty Hall", date_val=''):
+    if(date_val==None):
+       date_val = time.time()
+    
+    context['hall_t'] = hall_type
+    context['hall_subt'] = hall_subtype
+    context['date'] = date_val
+
+    '''
+    const allocation = [
+    {
+        venue: "Hall 1",
+        startDate: "2023-11-08",
+        endDate: "2023-11-08",
+        startTime: "12:00:00",
+        endTime: "17:30:00",
+        eventName: "cs201",
+        eventType: "Lecture"
+    }
+    '''
+    print(context['date'])
+    #date_selected = strftime('%Y-%m-%d', localtime(date_val))
+    #print(date_selected)
+    
+    res = event_details.objects.filter(start_time__gte=context['date']).values()
+    print(res)
+
+    print(context)
+
 
     return context
 
@@ -105,15 +133,12 @@ def form(request):
 def table(request):
     context = {}
     context = load_nav(context)
-
-    print(1)
+    
     hall_type = request.POST.get('hall-types')
     hall_subtype = request.POST.get('hall-subtypes')
     date_val = request.POST.get('calendar-date')
-    print(hall_type)
-    print(hall_subtype)
-    print(date_val)
-
+    context = load_table(context, hall_type, hall_subtype, date_val)
+   
     #Query
     #query filter 
 

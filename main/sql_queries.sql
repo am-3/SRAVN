@@ -1,20 +1,20 @@
 
 --Populate 
-INSERT INTO main_venue_details VALUES ('1xx', 'IInd CSE');
-INSERT INTO main_venue_details VALUES ('112', 'IInd ECE');
-INSERT INTO main_venue_details VALUES ('121', 'IIIrd CSE');
-INSERT INTO main_venue_details VALUES ('122', 'IIIrd ECE');
+INSERT INTO main_venue_details VALUES ( 'IInd CSE'                  , '1xx' );              
+INSERT INTO main_venue_details VALUES ( 'IInd ECE'                  , '112' );
+INSERT INTO main_venue_details VALUES ( 'IIIrd CSE'                 , '121' );
+INSERT INTO main_venue_details VALUES ( 'IIIrd ECE'                 , '122' );
 
-INSERT INTO main_venue_details VALUES ('210', 'Sudha Murty Hall');
-INSERT INTO main_venue_details VALUES ('211', 'Seminar Hall-II');
-INSERT INTO main_venue_details VALUES ('212', 'Seminar Hall-III');
+INSERT INTO main_venue_details VALUES ( 'Sudha Murty Hall'          , '210' );
+INSERT INTO main_venue_details VALUES ( 'Seminar Hall-II'           , '211' );
+INSERT INTO main_venue_details VALUES ( 'Seminar Hall-III'          , '212' );
 
-INSERT INTO main_venue_details VALUES ('310', 'Meeting Hall-I');
-INSERT INTO main_venue_details VALUES ('311', 'Meeting Hall-II');
-INSERT INTO main_venue_details VALUES ('312', 'Meeting Hall-III');
-INSERT INTO main_venue_details VALUES ('313', 'Meeting Hall-IV');
-INSERT INTO main_venue_details VALUES ('314', 'Meeting Hall-V');
-INSERT INTO main_venue_details VALUES ('315', 'Meeting Hall-VI');
+INSERT INTO main_venue_details VALUES ( 'Meeting Hall-I'            , '310' );
+INSERT INTO main_venue_details VALUES ( 'Meeting Hall-II'           , '311' );
+INSERT INTO main_venue_details VALUES ( 'Meeting Hall-III'          , '312' );
+INSERT INTO main_venue_details VALUES ( 'Meeting Hall-IV'           , '313' );
+INSERT INTO main_venue_details VALUES ( 'Meeting Hall-V'            , '314' );
+INSERT INTO main_venue_details VALUES ( 'Meeting Hall-VI'           , '315' );
 
 
 --Populate Sample Events
