@@ -78,5 +78,5 @@
 
   <!-- Approval Section -->
 
-  <text x="20" y="630">Approved by Hod/Faculty In-charge: %s</text>
+  <text x="20" y="630">Approved by EC/CC In-charge: %s</text>
 </svg>
