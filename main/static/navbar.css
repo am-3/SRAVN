@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+:root {
+    --primary-header-color: #08567a;
+    --primary-text-color: #fff;
+    --secondary-header-color: #e4f0f5;
+    --font-color: aliceblue;
+    --hover-color: #a6c7d6;
+    --font-family: 'Montserrat',sans-serif;
+    --font-size: 0.8rem;
+}
+
+body {
+    margin: 0;
+}
+
+#navbar {
+    width: 100%;
+}
+
+#nav-up {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-header-color);
+    width: 100%;
+    height: 60px;
+}
+
+#nav-up > a {
+    font-size: 35px;
+    font-family: var(--font-family);
+    color:var(--font-color);
+    font-weight: 600;
+    position: relative;
+    margin: 0;
+    text-decoration: none;
+}
+
+#nav-down{
+    background-image: linear-gradient(to bottom, var(--primary-header-color), var(--secondary-header-color));
+    display: flex;
+    justify-content: space-around;
+    height: 130px;
+    align-items: center;
+}
+#myForm{
+    display: flex;
+    gap: 20px;
+}
+#hall-types {
+    border: none;
+
+    margin: 0;
+
+    width: 300px;
+
+    text-align: center;
+}
+
+#hall-subtypes {
+    border: none;
+    margin: 0;
+
+    width: 300px;
+
+    text-align: center;
+}
+
+#calendar-date {
+    padding: 5px;
+    border: none;
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+
+    width: 300px;
+
+    text-align: center;
+}
+
+#submit-btn {
+    border-radius: 5px;
+    background-color: rgb(218, 59, 59);
+}
+#submit-btn:hover{
+    background-color: red;
+}

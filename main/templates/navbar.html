@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+
+<div id="navbar">
+    <div id="nav-up">
+        <p>IIIT Trichy Hall Booking</p>
+    </div>
+        <div id = "nav-down">
+            <form id="myForm" method="post">
+                {% csrf_token %}
+                <select name="hall-types" id="hall-types" onchange="updateSecondDropdown()">
+                    <option selected value="">Select Hall Type</option>
+                    <option value="Classrooms">Classrooms</option>
+                    <option value="Seminar Halls">Seminar Halls</option>
+                    <option value="Meeting Halls">Meeting Halls</option>
+                </select>
+                <select name="hall-subtypes" id="hall-subtypes" disabled>
+                </select>
+                <input name="calendar-date" type="date" id="calendar-date">
+                <input name="submit-btn" type="submit" id="submit-btn">
+            </form>
+        </div>
+</div>
+
+{% endblock %}

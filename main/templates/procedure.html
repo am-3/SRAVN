@@ -1,0 +1,122 @@
+{% extends "base.html" %} 
+
+{% block title %}
+    <title>Procedure</title>
+{% endblock %}
+
+{% block content %}
+
+<style>
+    #procedurestuff, #procedureh1, h3, a {
+        margin: 0;
+        padding: 0;
+    }
+
+    #procedurestuff {
+        font-family: Arial, sans-serif;
+        background-color: #d9d9d9;
+        padding-left: 10px;
+    }
+
+    #procedureh1{
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    h4{
+        padding: 10px;
+    }
+
+    #procedurepara {
+        margin: 10px 0;
+        padding: 10px;
+    }
+
+    a {
+        color: #0078d4;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+<h1 id="procedureh1">Instructions for Filling Event Request Form</h1>
+
+<div id="procedurestuff">
+<h4>
+    This page provides step-by-step instructions for filling out the
+    <a href="./form">Event Request Form</a>. Please follow these guidelines to
+    ensure your event request is processed smoothly.
+</h4>
+
+<h2>Step 1: Select venue(s)</h2>
+<p id="procedurepara">
+    Select the room numbers of the halls you require for your event. Click the
+    "Add Hall" button to add additional halls if needed.
+</p>
+
+<h2>Step 2: Enter event name</h2>
+<p id="procedurepara">Provide a name for your event in the "Name of the event" field.</p>
+
+<h2>Step 3: Date(s) of the event</h2>
+<p id="procedurepara">
+    Add the date(s) of your event program. For each date, select the date using
+    the calendar input and specify the start and end times for that date. Click
+    the "Add Date" button to add more dates if necessary.
+</p>
+
+<h2>Step 4: Event Description</h2>
+<p id="procedurepara">
+    Describe the purpose of your event in detail in the "Event Description"
+    field.
+</p>
+
+<h2>Step 5: Audio System and Projector</h2>
+<p id="procedurepara">
+    Check the appropriate checkboxes if you require an Audio System and/or a
+    Projector for your event.
+</p>
+
+<h2>Step 6: Event Coordinator Details</h2>
+<p id="procedurepara">
+    Provide the details of the event coordinator, including their name, email
+    address (must be in the iiitt.ac.in domain), and select their department
+    from the dropdown menu.
+</p>
+
+<h2>Step 7: Undertaking</h2>
+<p id="procedurepara">
+    Check the "Undertaking" checkbox to indicate that you take responsibility
+    for taking care of all electronic and non-electronic items during the event.
+</p>
+
+<h2>Step 8: Upload Sanction Letter</h2>
+<p id="procedurepara">
+    Upload a PDF copy of the sanction letter by clicking the "Choose File"
+    button and selecting the appropriate file. The uploaded file must be in PDF
+    format.
+</p>
+
+<h2>Step 9: Submit</h2>
+<p id="procedurepara">
+    After completing all the sections of the form, click the "Submit" button to
+    send your event request.
+</p>
+
+<h4>
+    Note that the proper following of these guidelines will result if quicker
+    approval of your request.
+</h4>
+
+<p id="procedurepara">
+    If you have any questions or need assistance, please contact the event
+    organizers or the appropriate department.
+</p>
+
+<p id="procedurepara"><a href="./form">Click here</a> to fill out the Event Request Form</p>
+</div>
+
+{% endblock %}
