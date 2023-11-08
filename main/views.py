@@ -5,13 +5,11 @@ from main.models import *
 import json
 
 #Helper Functions
-def load_nav():
-    context = {
-            'Classrooms_list' : [],
-            'SeminarHalls_list' : [],
-            'MeetingHalls_list' : []
-        }
-    
+def load_nav(context):
+    context['Classrooms_list'] = []
+    context['MeetingHalls_list'] = []
+    context['SeminarHalls_list'] = []
+
     set_a = venue_details.objects.filter(venue_room__startswith='1')
     set_b = venue_details.objects.filter(venue_room__startswith='2')
     set_c = venue_details.objects.filter(venue_room__startswith='3')
@@ -29,6 +27,10 @@ def load_nav():
 
     return context
 
+def load_table(context):
+
+    return context
+
 ###################################################################################################################
 
 
@@ -37,7 +39,8 @@ def load_nav():
 
 #Request Handler
 def start(request):
-    context = load_nav()
+    context = {}
+    context = load_nav(context)
     
     return render(request, 'base.html', context)
 
@@ -45,7 +48,8 @@ def hello(request):
     return render(request, 'hello.html')
 
 def nav(request):
-    context = load_nav()
+    context = {}
+    context = load_nav(context)
     return render(request, 'navbar.html', context)
 
 def form(request):
@@ -66,7 +70,8 @@ def form(request):
     return render(request, 'form.html')
 
 def table(request):
-    context = load_nav()
+    context = {}
+    context = load_nav(context)
 
     print(1)
     hall_type = request.POST.get('hall-types')
