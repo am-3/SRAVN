@@ -2,3 +2,5 @@
 sravn/__pycache__/
 main/__pycache__/
 main/migrations/__pycache__/
+client_secret_oauth.json
+client_secret_oauth.json:Zone.Identifier

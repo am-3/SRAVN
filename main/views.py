@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
 from main.models import *
-import json
+from django.contrib.auth import logout
+import json, time
 import os
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
@@ -54,8 +55,8 @@ def load_table(context, hall_type="Seminar Halls", hall_subtype="210: Sudha Murt
     #date_selected = strftime('%Y-%m-%d', localtime(date_val))
     #print(date_selected)
     
-    res = event_details.objects.filter(start_time__gte=context['date']).values()
-    print(res)
+    #res = event_details.objects.filter(start_time__gte=context['date']).values()
+    #print(res)
 
     print(context)
 
@@ -160,3 +161,8 @@ def form_conf(request):
 
 def status(request):
     return render(request, 'status.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect("/")
