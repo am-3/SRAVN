@@ -1,23 +1,56 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from main.models import *
+import json
 
-# Create your views here.
+#Helper Functions
+def load_nav(context):
+    context['Classrooms_list'] = []
+    context['MeetingHalls_list'] = []
+    context['SeminarHalls_list'] = []
+
+    set_a = venue_details.objects.filter(venue_room__startswith='1')
+    set_b = venue_details.objects.filter(venue_room__startswith='2')
+    set_c = venue_details.objects.filter(venue_room__startswith='3')
+    
+    for row in set_a:
+        context['Classrooms_list'].append(str(row.venue_room) + ': ' + row.venue_details)
+    for row in set_b:
+        context['SeminarHalls_list'].append(str(row.venue_room) + ': ' + row.venue_details)
+    for row in set_c:
+        context['MeetingHalls_list'].append(str(row.venue_room) + ': ' + row.venue_details)
+    
+    #Converting to JSON
+    for i in context:
+        context[i] = json.dumps(context[i])
+
+    return context
+
+def load_table(context):
+
+    return context
+
+###################################################################################################################
+
+
+
+
+
 #Request Handler
 def start(request):
-    template = loader.get_template('base.html')
-    context = {
-        'user' : {
-            'username' : 'hey there lol'
-        }
-    }
-    return HttpResponse(template.render(context, request))
+    context = {}
+    context = load_nav(context)
+    
+    return render(request, 'base.html', context)
 
 def hello(request):
     return render(request, 'hello.html')
 
 def nav(request):
-    return render(request, 'navbar.html')
+    context = {}
+    context = load_nav(context)
+    return render(request, 'navbar.html', context)
 
 def form(request):
     print(2)
@@ -56,6 +89,9 @@ def form(request):
     return render(request, 'form.html')
 
 def table(request):
+    context = {}
+    context = load_nav(context)
+
     print(1)
     hall_type = request.POST.get('hall-types')
     hall_subtype = request.POST.get('hall-subtypes')
@@ -63,10 +99,25 @@ def table(request):
     print(hall_type)
     print(hall_subtype)
     print(date_val)
-    return render(request, 'allocation.html')
+
+    #Query
+    #query filter 
+
+    #result format
+
+    return render(request, 'allocation.html', context)
+
+
+
 
 def procedure(request):
     return render(request, 'procedure.html')
 
 def about(request):
     return render(request, 'about.html')
+
+def form_conf(request):
+    return render(request, 'form_confirmation.html')
+
+def status(request):
+    return render(request, 'status.html')

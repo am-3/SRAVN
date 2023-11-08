@@ -46,13 +46,14 @@ body {
 #myForm{
     display: flex;
     gap: 20px;
+    width: 75%;
 }
 #hall-types {
     border: none;
 
     margin: 0;
 
-    width: 300px;
+    width: 80%;
 
     text-align: center;
 }
@@ -61,7 +62,7 @@ body {
     border: none;
     margin: 0;
 
-    width: 300px;
+    width: 80%;
 
     text-align: center;
 }
@@ -73,15 +74,16 @@ body {
     color: #fff;
     border-radius: 5px;
 
-    width: 300px;
+    width: 80%;
 
     text-align: center;
 }
 
 #submit-btn {
     border-radius: 5px;
-    background-color: rgb(218, 59, 59);
+    background-color:  #34bf54;
+    transition: all 0.2s;
 }
 #submit-btn:hover{
-    background-color: red;
+    background-color: #2bc850;
 }

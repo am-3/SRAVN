@@ -322,4 +322,4 @@ function submitForm() {
     xhr.send(formData);
 }
 
-document.getElementById('submit-btn').addEventListener('click', submitForm);
+document.getElementById('submitBtn').addEventListener('click', submitForm);

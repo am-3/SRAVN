@@ -1,8 +1,9 @@
 const MAX_VIEW_LIMIT = 90; // Including today
 
-var Classrooms = ['Sub Option 1-1', 'Sub Option 1-2'];
-var Meeting_Halls = ['Sub Option 2-1', 'Sub Option 2-2'];
-var Seminar_Halls = ['Sub Option 3-1', 'Sub Option 3-2'];
+//var Classrooms = ['1xx: IInd CSE', '1xx: IInd ECE', '1xx: IIIrd ECE', '1xx: IIIrd ECE' ];
+var Classrooms = Classrooms_list;
+var Seminar_Halls = SeminarHalls_list;
+var Meeting_Halls = MeetingHalls_list;
 
 function updateSecondDropdown() {
     var hallTypes = document.getElementById("hall-types");

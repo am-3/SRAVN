@@ -1,0 +1,49 @@
+#statusH1 {
+    padding: 10px;
+    text-align: center;
+}
+
+#statusTable {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.statusTableTH, .statusTableTD {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Style table header */
+#statusTableTHEAD {
+    background-color: #0d648c;
+    color: #fff;
+}
+
+/* Add styles to the links */
+#statusForm {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+#statusForm:hover {
+    text-decoration: underline;
+}
+
+#statusTableTH1 {
+    width: 25%;
+}
+
+#statusTableTH2 {
+    width: 13%;
+}
+
+#statusTableTH3 {
+    width: 13%;
+}
+
+#statusTableTH4 {
+    width: 13%;
+}
