@@ -8,4 +8,4 @@ Team:
 - [Rishabh Singh](https://www.github.com/Rishabh705)
 - [Virendra Panchal](https://www.github.com/Virendra69)
 
-- Background image by - https://wallpapercave.com/ 
+Background image by - https://wallpapercave.com/ 

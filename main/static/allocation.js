@@ -1,12 +1,18 @@
 const legends = ['Event Approved', 'Lecture', 'Seminar', 'Meeting', 'Event Pending']
 
+let startTime = new Date();
+startTime.setHours(0, 0, 0, 0); // Start at 12:00 AM
+
+let endTime = new Date();
+endTime.setHours(24, 0, 0, 0); // End at 6:00 PM
+
 const allocation = [
     {
         venue: "Hall 1",
         startDate: "2023-11-08",
         endDate: "2023-11-08",
         startTime: "12:00:00",
-        endTime: "13:00:00",
+        endTime: "17:30:00",
         eventName: "cs201",
         eventType: "Lecture"
     },
@@ -15,7 +21,7 @@ const allocation = [
         startDate: "2023-11-08",
         endDate: "2023-11-08",
         startTime: "12:00",
-        endTime: "13:00",
+        endTime: "15:00",
         eventName: "cs515",
         eventType: "Seminar"
     },
@@ -24,9 +30,9 @@ const allocation = [
         startDate: "2023-11-08",
         endDate: "2023-11-08",
         startTime: "13:00",
-        endTime: "14:00",
+        endTime: "16:00",
         eventName: "Razor",
-        eventType: "Seminar"
+        eventType: "Event Approved"
     },
     {
         venue: "Hall 4",
@@ -157,11 +163,6 @@ const fillData = () => {
     }
 
     // Set time
-    let startTime = new Date();
-    startTime.setHours(12, 0, 0, 0); // Start at 12:00 AM
-
-    let endTime = new Date();
-    endTime.setHours(18, 0, 0, 0); // End at 6:00 PM
 
     // Fill tbody
 
