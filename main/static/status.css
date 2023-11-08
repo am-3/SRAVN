@@ -10,10 +10,10 @@
     font-family: Arial, sans-serif;
 }
 
-#statusTableTH, #statusTableTD {
+.statusTableTH, .statusTableTD {
     border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+    padding: 10px;
+    text-align: center;
 }
 
 /* Style table header */
@@ -30,4 +30,20 @@
 
 #statusForm:hover {
     text-decoration: underline;
+}
+
+#statusTableTH1 {
+    width: 25%;
+}
+
+#statusTableTH2 {
+    width: 13%;
+}
+
+#statusTableTH3 {
+    width: 13%;
+}
+
+#statusTableTH4 {
+    width: 13%;
 }

@@ -1,5 +1,5 @@
 /* Reset some default browser styles */
-#aboutDiv, #aboutH1, #aboutH2, #aboutPara, #aboutUL, #aboutOL,#aboutList {
+#aboutDiv, #aboutH1, .aboutH2, .aboutPara, #aboutUL, #aboutOL,.aboutList {
     margin: 0;
     padding: 0;
 }
@@ -29,7 +29,7 @@
 }
 
 /* Style headings */
-#aboutH2 {
+.aboutH2 {
     color: #0074b3;
     margin-top: 20px;
 }
@@ -40,7 +40,7 @@
     margin-left: 20px;
 }
 
-#aboutPara {
+.aboutPara {
     margin-top: 20px;
 }
 
@@ -53,7 +53,7 @@
     color: #fff;
 }
 
-#aboutList {
+.aboutList {
     padding: 10px;
 }
 
