@@ -320,6 +320,8 @@ function submitForm() {
         }
     };
     xhr.send(formData);
+    window.location.href = "/status";
+    document.getElementById('eventForm').reset();
 }
 
 document.getElementById('submitBtn').addEventListener('click', submitForm);
