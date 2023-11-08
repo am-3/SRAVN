@@ -97,3 +97,9 @@ def procedure(request):
 
 def about(request):
     return render(request, 'about.html')
+
+def form_conf(request):
+    return render(request, 'form_confirmation.html')
+
+def status(request):
+    return render(request, 'status.html')
