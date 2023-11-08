@@ -94,3 +94,6 @@ def procedure(request):
 
 def about(request):
     return render(request, 'about.html')
+
+def status(request):
+    return render(request, 'status.html')

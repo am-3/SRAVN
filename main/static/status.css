@@ -1,0 +1,28 @@
+/* Add styles to the table */
+#statusTable {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+#statusTableTH, #statusTableTD {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Style table header */
+#statusTableTHEAD {
+    background-color: #f2f2f2;
+}
+
+/* Add styles to the links */
+#statusForm {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+#statusForm:hover {
+    text-decoration: underline;
+}

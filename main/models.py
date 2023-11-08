@@ -41,3 +41,8 @@ class event_status(models.Model):
 class event_venue(models.Model):
     event_id = models.ForeignKey(eventID, on_delete=models.CASCADE)
     venue_room = models.ForeignKey(venue_details, on_delete=models.CASCADE)
+
+class user_event_form_files(models.Model):
+    user_email = models.EmailField()
+    event_id = models.ForeignKey(eventID, on_delete=models.CASCADE)
+    form_svg = models.FileField()

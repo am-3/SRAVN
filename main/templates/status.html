@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Hall Booking Form</title>
+{% endblock %}
+
+{% block navbar %}
+<div id="navbar">
+    <div id="nav-up">
+        <a href="/"><p>Event Records</p></a>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<h1>Your Event Status</h1>
+<table id="statusTable">
+    <thead id="statusTableTHEAD">
+        <tr>
+            <th id="statusTableTH">Event Name</th>
+            <th id="statusTableTH">Event ID</th>
+            <th id="statusTableTH">Status</th>
+            <th id="statusTableTH">Form</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for event in event_details %}
+        <tr>
+            <td id="statusTableTD">{{ event.event_name }}</td>
+            <td id="statusTableTD">{{ event.event_id }}</td>
+            <td id="statusTableTD">{% if event.status %}Approved{% else %}Rejected{% endif %}</td>
+            <td id="statusTableTD">
+                {% if event.form %}
+                <a href="{{ event.form.url }}" target="_blank" id="statusForm">View Form</a>
+                {% else %} No Form {% endif %}
+            </td id="statusTableTD">
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -8,5 +8,6 @@ urlpatterns = [
     path('form', views.form),
     path('table', views.table),
     path('procedure', views.procedure),
-    path('about', views.about)
+    path('about', views.about),
+    path('status', views.status, name="status")
 ]
