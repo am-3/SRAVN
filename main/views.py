@@ -9,8 +9,8 @@ import json
 def start(request):
     context = {
             'Classrooms_list' : [],
-            'Seminar Halls' : [],
-            'Meeting Rooms' : []
+            'SeminarHalls_list' : [],
+            'MeetingHalls_list' : []
         }
     
     set_a = venue_details.objects.filter(venue_room__startswith='1')
@@ -20,12 +20,14 @@ def start(request):
     for row in set_a:
         context['Classrooms_list'].append(str(row.venue_room) + ': ' + row.venue_details)
     for row in set_b:
-        context['Seminar Halls'].append(str(row.venue_room) + ': ' + row.venue_details)
+        context['SeminarHalls_list'].append(str(row.venue_room) + ': ' + row.venue_details)
     for row in set_c:
-        context['Meeting Rooms'].append(str(row.venue_room) + ': ' + row.venue_details)
-    print(type(context['Classrooms_list']))
-    context['Classrooms_list'] = json.dumps(context['Classrooms_list'])
-    print(type(context['Classrooms_list']))
+        context['MeetingHalls_list'].append(str(row.venue_room) + ': ' + row.venue_details)
+    
+    #Converting to JSON
+    for i in context:
+        context[i] = json.dumps(context[i])
+    
     return render(request, 'base.html', context)
 
 def hello(request):
@@ -33,10 +35,10 @@ def hello(request):
 
 def nav(request):
     context = {
-        'Classrooms_list' : [],
-        'Seminar Halls' : [],
-        'Meeting Rooms' : []
-    }
+            'Classrooms_list' : [],
+            'SeminarHalls_list' : [],
+            'MeetingHalls_list' : []
+        }
     
     set_a = venue_details.objects.filter(venue_room__startswith='1')
     set_b = venue_details.objects.filter(venue_room__startswith='2')
@@ -45,12 +47,13 @@ def nav(request):
     for row in set_a:
         context['Classrooms_list'].append(str(row.venue_room) + ': ' + row.venue_details)
     for row in set_b:
-        context['Seminar Halls'].append(str(row.venue_room) + ': ' + row.venue_details)
+        context['SeminarHalls_list'].append(str(row.venue_room) + ': ' + row.venue_details)
     for row in set_c:
-        context['Meeting Rooms'].append(str(row.venue_room) + ': ' + row.venue_details)
-    print(type(context['Classrooms_list']))
-    context['Classrooms_list'] = json.dumps(context['Classrooms_list'])
-    print(type(context['Classrooms_list']))
+        context['MeetingHalls_list'].append(str(row.venue_room) + ': ' + row.venue_details)
+    
+    #Converting to JSON
+    for i in context:
+        context[i] = json.dumps(context[i])
     return render(request, 'navbar.html', context)
 
 def form(request):
