@@ -31,7 +31,7 @@ class event_coordinators_details(models.Model):
 
 class event_sanction(models.Model):
     event_id = models.ForeignKey(eventID, on_delete=models.CASCADE)
-    sanction_letter = models.FileField()
+    sanction_letter = models.FileField(upload_to ='uploads/% Y/% m/% d/')
 
 class event_status(models.Model):
     event_id = models.ForeignKey(eventID, on_delete=models.CASCADE)
