@@ -3,17 +3,17 @@ const legends = ['Event Approved', 'Lecture', 'Seminar', 'Meeting', 'Event Pendi
 const allocation = [
     {
         venue: "Hall 1",
-        startDate: "2023-11-07",
-        endDate: "2023-11-07",
+        startDate: "2023-11-08",
+        endDate: "2023-11-08",
         startTime: "12:00:00",
         endTime: "13:00:00",
         eventName: "cs201",
-        eventType: "Seminar"
+        eventType: "Lecture"
     },
     {
         venue: "Hall 2",
-        startDate: "2023-11-07",
-        endDate: "2023-11-07",
+        startDate: "2023-11-08",
+        endDate: "2023-11-08",
         startTime: "12:00",
         endTime: "13:00",
         eventName: "cs515",
@@ -21,8 +21,8 @@ const allocation = [
     },
     {
         venue: "Hall 3",
-        startDate: "2023-11-07",
-        endDate: "2023-11-07",
+        startDate: "2023-11-08",
+        endDate: "2023-11-08",
         startTime: "13:00",
         endTime: "14:00",
         eventName: "Razor",
@@ -30,8 +30,8 @@ const allocation = [
     },
     {
         venue: "Hall 4",
-        startDate: "2023-11-07",
-        endDate: "2023-11-07",
+        startDate: "2023-11-08",
+        endDate: "2023-11-08",
         startTime: "14:00",
         endTime: "16:00",
         eventName: "Razor",
@@ -39,17 +39,17 @@ const allocation = [
     },
     {
         venue: "Hall 5",
-        startDate: "2023-11-07",
-        endDate: "2023-11-07",
+        startDate: "2023-11-08",
+        endDate: "2023-11-08",
         startTime: "16:30",
         endTime: "17:30",
         eventName: "Razor",
-        eventType: "Seminar"
+        eventType: "Event Pending"
     },
     {
         venue: "Hall 6",
-        startDate: "2023-11-07",
-        endDate: "2023-11-07",
+        startDate: "2023-11-08",
+        endDate: "2023-11-08",
         startTime: "16:30",
         endTime: "17:30",
         eventName: "Razor",
@@ -57,8 +57,8 @@ const allocation = [
     },
     {
         venue: "Hall 7",
-        startDate: "2023-11-07",
-        endDate: "2023-11-07",
+        startDate: "2023-11-08",
+        endDate: "2023-11-08",
         startTime: "16:30",
         endTime: "17:30",
         eventName: "Razor",
@@ -66,12 +66,12 @@ const allocation = [
     },
     {
         venue: "Hall 8",
-        startDate: "2023-11-07",
-        endDate: "2023-11-07",
+        startDate: "2023-11-08",
+        endDate: "2023-11-08",
         startTime: "16:30",
         endTime: "17:30",
         eventName: "Razor",
-        eventType: "Seminar"
+        eventType: "Meeting"
     },
 
 ]
@@ -218,8 +218,8 @@ const fillData = () => {
                 td.addEventListener("click", function () {
                     const eventDetails = {
                         venue: "Hall 2",
-                        startDate: "2023-11-07",
-                        endDate: "2023-11-07",
+                        startDate: "2023-11-08",
+                        endDate: "2023-11-08",
                         startTime: "12:00",
                         endTime: "13:00",
                         eventName: "cs515",
