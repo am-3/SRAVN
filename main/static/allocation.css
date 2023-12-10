@@ -16,7 +16,8 @@
     margin: 0;
     box-sizing: border-box;
 }
-.allocation-spot{
+
+.allocation-spot {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,26 +25,34 @@
     font-size: 30px;
     height: 50px;
 }
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
 table {
     border-collapse: collapse;
-    border-left: 1px solid var(--border-color); 
+    border-left: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
     letter-spacing: 1px;
     font-family: var(--font-family);
     font-size: var(--font-size);
     width: 100%;
 }
+
 #allocationTHEAD {
     background-color: var(--primary-background-color);
     color: var(--primary-text-color);
-    display: block;
+    display: table;
+    width: 100%;
 }
 
 #allocationTBODY {
-    display: block;
+    display: table;
     background-color: var(--secondary-background-color);
-    overflow: scroll;
-    height: 600px;
+    width: 100%;
 }
 
 tbody tr:nth-child(even) {
@@ -52,71 +61,39 @@ tbody tr:nth-child(even) {
 
 tfoot {
     background-color: aliceblue;
-    display: block;
+    display: table;
+    width: 100%;
+}
+tfoot td,
+tfoot th {
+    width: 1%;
 }
 
 
 td,
 th {
-    border-left: 1px solid var(--border-color); 
+    border-left: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
     padding: var(--cell-padding);
     text-align: left;
-    width: var(--cell-width);
+    min-width: var(--cell-width);
 }
-.time-cell{
-    width: 65px; 
+
+.time-cell {
+    width: 65px;
 }
-.active:hover{
+
+.active:hover {
     background-color: var(--hover-color);
     cursor: pointer;
     text-decoration: underline;
 }
 
-/* Popup */
-
-.popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Optional: Add styles for the scrollbar appearance */
+.table-wrapper::-webkit-scrollbar {
+    width: 12px;
 }
 
-.popup-content {
-    background: var(--secondary-background-color);
-    padding: 40px 80px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    position: relative;
-}
-
-.close-popup {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
-.event-details{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-.event-details h2{
-    text-align: center;
-    text-decoration: underline;
-    padding-bottom: 1rem;
-}
-.event-details span{
-    font-weight: bold;
-}
-.event-details p {
-    display: flex;
-    justify-content: space-between;
+.table-wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
 }
