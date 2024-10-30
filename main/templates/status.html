@@ -1,11 +1,50 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
 {% block title %}
-    <title>Hall Booking Form</title>
+<title>Hall Booking Form</title>
 {% endblock %}
 
-<!-- NavBar comes here -->
+{% block navbar %}
+<div id="navbar">
+    <div id="nav-up">
+        <a href="/"><p>Event Records</p></a>
+    </div>
+</div>
+{% endblock %}
 
 {% block content %}
 
+<h1 id="statusH1">Your Event(s) Status</h1>
+<table id="statusTable">
+    <thead id="statusTableTHEAD">
+        <tr>
+            <th id="statusTableTH1" class="statusTableTH">Event Name</th>
+            <th id="statusTableTH2" class="statusTableTH">Event ID</th>
+            <th id="statusTableTH3" class="statusTableTH">Status</th>
+            <th id="statusTableTH4" class="statusTableTH">Form</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="statusTableRow">
+            <td id="statusTableTD1" class="statusTableTD">SomeName</td>
+            <td id="statusTableTD2" class="statusTableTD">SomeId</td>
+            <td id="statusTableTD3" class="statusTableTD">SomeIdea</td>
+            <td id="statusTableTD4" class="statusTableTD"><a href="../static/svg/E0001.svg">Click Here</a></td>
+        </tr>
+        <tr class="statusTableRow">
+            <td id="statusTableTD1" class="statusTableTD">SomeName</td>
+            <td id="statusTableTD2" class="statusTableTD">SomeId</td>
+            <td id="statusTableTD3" class="statusTableTD">SomeIdea</td>
+            <td id="statusTableTD4" class="statusTableTD"></td>
+        </tr>
+        <tr class="statusTableRow">
+            <td id="statusTableTD1" class="statusTableTD">SomeName</td>
+            <td id="statusTableTD2" class="statusTableTD">SomeId</td>
+            <td id="statusTableTD3" class="statusTableTD">SomeIdea</td>
+            <td id="statusTableTD4" class="statusTableTD"></td>
+        </tr>
+    </tbody>
+</table>
+
+<script src="../static/status.js"></script>
 {% endblock %}

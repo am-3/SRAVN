@@ -1,0 +1,82 @@
+<svg width="800" height="800" xmlns="http://www.w3.org/2000/svg">
+    <!-- Form Title -->
+    <text x="20" y="40" font-size="24" font-weight="bold">Event Reservation Form</text>
+  
+    <!-- Form Fields -->
+    <!-- Field 1: Hall Number(s) -->
+    <text x="20" y="80">1. Hall number(s):</text>
+    <rect x="200" y="60" width="380" height="20" fill="white" stroke="black"/>
+  
+    <text x="210" y="75">215</text>
+  
+    <!-- Field 2: Name of Event -->
+    <text x="20" y="120">2. Name of event:</text>
+    <rect x="200" y="100" width="380" height="20" fill="white" stroke="black"/>
+  
+    <text x="210" y="115">Freshers Orientation</text>
+  
+    <!-- Field 3: Date(s) of Event -->
+    <text x="20" y="160">3. Date(s) of event:</text>
+    <rect x="200" y="140" width="380" height="20" fill="white" stroke="black"/>
+  
+    <text x="210" y="155">14/11/2023</text>
+  
+    <!-- Field 4: Time Duration -->
+    <text x="20" y="200">4. Time Duration(s):</text>
+    <rect x="200" y="180" width="380" height="20" fill="white" stroke="black"/>
+  
+    <text x="210" y="195">10:00 AM - 12:00 PM</text>
+  
+    <!-- Field 5: Event Details (Multiline) -->
+    <text x="20" y="240">5. Event details:</text>
+    <rect x="200" y="220" width="380" height="60" fill="white" stroke="black"/>
+  
+    <text x="206" y="235">This is an event for freshers orientation.</text>
+    <text x="206" y="249">sjdfgsyudgf</text>
+    <text x="206" y="263"></text>
+    <text x="206" y="277"></text>
+  
+    <!-- Checkbox for audio system -->
+    <text x="20" y="320">6. Requirement for audio system:</text>
+    <rect x="260" y="306" width="20" height="20" fill="white" stroke="black"/>
+  
+    <text x="265" y="320" font-size="14" fill="black">&#10004;</text>
+    <!-- &#10004;    check symbol -->
+    <!-- &#10007;    cross symbol -->
+  
+    <!-- Checkbox for projector -->
+    <text x="20" y="360">7. Requirement for projector:</text>
+    <rect x="260" y="346" width="20" height="20" fill="white" stroke="black"/>
+  
+    <text x="265" y="360" font-size="14" fill="black">&#10004;</text>
+    <!-- &#10004;    check symbol -->
+    <!-- &#10007;    cross symbol -->
+  
+    <!-- Event Coordinator Details -->
+    <text x="20" y="400">8. Event coordinator details:</text>
+    <text x="40" y="440">a) Event coordinator name:</text>
+    <rect x="260" y="420" width="320" height="20" fill="white" stroke="black"/>
+  
+    <text x="270" y="435">ABCD</text>
+  
+    <text x="40" y="480">b) Event coordinator email:</text>
+    <rect x="260" y="460" width="320" height="20" fill="white" stroke="black"/>
+  
+    <text x="270" y="475">a@iiitt.ac.in</text>
+  
+    <text x="40" y="520">c) Department:</text>
+    <rect x="260" y="500" width="320" height="20" fill="white" stroke="black"/>
+  
+    <text x="270" y="515">CSE</text>
+  
+    <!-- Undertaking Statement -->
+    <text x="20" y="560">I shall take complete responsibility of taking care of all the electronic / non-electronic items in the hall.</text>
+  
+    <!-- Digital Signature -->
+  
+    <text x="20" y="590">Digitally signed by neel_amit_shah at 2023-11-08T14:11:24.346Z</text>
+  
+    <!-- Approval Section -->
+  
+    <text x="20" y="630">Approved by EC/CC In-charge at 2023-11-08T14:18:46.727Z</text>
+  </svg>

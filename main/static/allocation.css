@@ -5,7 +5,7 @@
     --border-color: rgb(200, 200, 200);
     --cell-border-color: rgb(190, 190, 190);
     --cell-padding: 5px 10px;
-    --cell-width: 150px;
+    --cell-width: 170px;
     --hover-color: #a6c7d6;
     --font-family: sans-serif;
     --font-size: 0.8rem;
@@ -16,7 +16,8 @@
     margin: 0;
     box-sizing: border-box;
 }
-.allocation-spot{
+
+.allocation-spot {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,26 +25,34 @@
     font-size: 30px;
     height: 50px;
 }
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
 table {
     border-collapse: collapse;
-    border-left: 1px solid var(--border-color); 
+    border-left: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
     letter-spacing: 1px;
     font-family: var(--font-family);
     font-size: var(--font-size);
     width: 100%;
 }
-thead {
+
+#allocationTHEAD {
     background-color: var(--primary-background-color);
     color: var(--primary-text-color);
-    display: block;
+    display: table;
+    width: 100%;
 }
 
-tbody {
-    display: block;
+#allocationTBODY {
+    display: table;
     background-color: var(--secondary-background-color);
-    overflow: scroll;
-    height: 72vh;
+    width: 100%;
 }
 
 tbody tr:nth-child(even) {
@@ -52,29 +61,36 @@ tbody tr:nth-child(even) {
 
 tfoot {
     background-color: aliceblue;
-    display: block;
+    display: table;
+    width: 100%;
 }
-
 
 td,
 th {
-    border-left: 1px solid var(--border-color); 
+    border-left: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
     padding: var(--cell-padding);
     text-align: left;
-    width: var(--cell-width);
+    min-width: var(--cell-width);
 }
-.time-cell{
-    width: 60px; 
+
+.time-cell {
+    width: 65px;
 }
-.active:hover{
+
+.active:hover {
     background-color: var(--hover-color);
     cursor: pointer;
     text-decoration: underline;
 }
 
-/* Popup */
+/* Set fixed width for tfoot cells */
+tfoot td,
+tfoot th {
+    width: var(--cell-width);
+}
 
+/* Popup styles */
 .popup {
     position: fixed;
     top: 0;
@@ -103,20 +119,32 @@ th {
     cursor: pointer;
 }
 
-.event-details{
+.event-details {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
-.event-details h2{
+
+.event-details h2 {
     text-align: center;
     text-decoration: underline;
     padding-bottom: 1rem;
 }
-.event-details span{
+
+.event-details span {
     font-weight: bold;
 }
+
 .event-details p {
     display: flex;
     justify-content: space-between;
+}
+
+/* Optional: Add styles for the scrollbar appearance */
+.table-wrapper::-webkit-scrollbar {
+    width: 12px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
 }

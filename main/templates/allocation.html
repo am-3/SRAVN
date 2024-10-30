@@ -1,25 +1,27 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>Hall Booking System</title>
+<title>Allocation table</title>
 {% endblock %}
 
 {% block content %}
 <p class="allocation-spot">Allocation Table for Building 1</p>
-<table>
-    <thead>
-        <tr class="thead-row">
-            <th class="time-cell">Start Time</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="table-wrapper">
+    <table>
+        <thead id="allocationTHEAD">
+            <tr class="thead-row">
+                <th class="time-cell">Start Time</th>
+            </tr>
+        </thead>
+        <tbody id="allocationTBODY">
 
-    </tbody>
-    <tfoot>
-        <tr class="tfoot-row">
-            <th scope="row">Legend</th>
-        </tr>
-    </tfoot>
-</table>
+        </tbody>
+        <tfoot>
+            <tr class="tfoot-row">
+                <th scope="row">Legend</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
 
 {% endblock %}

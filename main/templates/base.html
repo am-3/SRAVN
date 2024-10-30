@@ -14,6 +14,8 @@
   <link rel="stylesheet" type="text/css" href="{% static '../static/form.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static '../static/navbar.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static '../static/about.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '../static/base.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static '../static/status.css' %}">
 
   <script>
     var Classrooms_list = JSON.parse("{{ Classrooms_list|escapejs|safe }}");
@@ -33,44 +35,83 @@
       <div id="nav-up">
         <a href='/'>Hall Booking System</a>
       </div>
-          <div id = "nav-down">
-              <form id="myForm" method="post">
-                  {% csrf_token %}
-                  <select name="hall-types" id="hall-types" onchange="updateSecondDropdown()">
-                      <option selected value="">Select Hall Type</option>
-                      <option value="Classrooms">Classrooms</option>
-                      <option value="Seminar Halls">Seminar Halls</option>
-                      <option value="Meeting Halls">Meeting Halls</option>
-                  </select>
-                  <select name="hall-subtypes" id="hall-subtypes" disabled>
-                  </select>
-                  <input name="calendar-date" type="date" id="calendar-date">
-                  <input name="submit-btn" type="submit" id="submit-btn">
-              </form>
-          </div>
-  </div>
+      <div id="nav-down">
+        <form id="myForm" method="post">
+          {% csrf_token %}
+          <select name="hall-types" id="hall-types" onchange="updateSecondDropdown()">
+            <option selected value="">Select Hall Type</option>
+            <option value="Classrooms">Classrooms</option>
+            <option value="Seminar Halls">Seminar Halls</option>
+            <option value="Meeting Halls">Meeting Halls</option>
+          </select>
+          <select name="hall-subtypes" id="hall-subtypes" disabled>
+          </select>
+          <input name="calendar-date" type="date" id="calendar-date">
+          <input name="submit-btn" type="submit" id="submit-btn">
+        </form>
+      </div>
+    </div>
     {% endblock %}
+
+  {% load socialaccount %}
+  <h2> GLogin</h2>
+  <a href="{% provider_login_url 'google' %}?next=/">Login with Google</a>
+
+  {% if user.is_authenticated %}
+    <p>Signed in as {{user.name}}</p>
+    <a href="/accounts/logout/">Logout</a>
+  {% endif %}
+
+
 
     {% block content %}
-    <h1>Local Library Home</h1>
-    <p>
-      Welcome to LocalLibrary, a website developed by
-      <em>Mozilla Developer Network</em>!
-    </p>
-    <h2>Dynamic content</h2>
-    <p>The library has the following record counts:</p>
-    <ul>
-      <li><strong>Books:</strong> {{ num_books }}</li>
-      <li><strong>Copies:</strong> {{ num_instances }}</li>
-      <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
-      <li><strong>Authors:</strong> {{ num_authors }}</li>
-    </ul>
-    <button>
-      <a href="/table">Get started</a>
-    </button>
+    <div class="intro">
+      <div class="overlay"></div>
+      <div class="content">
+        <section>
+          <h1>Welcome to the Hall Booking System</h1>
+          <p>
+            Discover endless possibilities and unlock the perfect space for your events. Whether it's a classroom, a
+            seminar
+            hall, or a meeting room, we've got you covered!
+          </p>
+        </section>
+        <section>
+          <h2>Your Space, Your Way</h2>
+          <p>Book the ideal venue for your next event with ease. Choose from a variety of options and make your
+            reservation
+            today.</p>
+        </section>
+        <button>
+          <a href="/table">Start Booking</a>
+        </button>
+      </div>
+    </div>
     {% endblock %}
-
   </div>
+  <footer>
+    <section class="container6">
+      <ul class='more-ul'>
+        <li>
+          <a href='/about'>About</a>
+        </li>
+        <li>
+          <a href='/procedure'>Procedure</a>
+        </li>
+        <li>
+          <a href='/form'>Form</a>
+        </li>
+        <li>
+          <a href='/status'>Status</a>
+        </li>
+      </ul>
+      <p>&copy; SRAVN Hall Booking System</p>
+      <ul>
+        <li><a href="https://github.com/am-3/SRAVN"><img src='../static/img/github.png' alt="github"
+              height='25px' /></a></li>
+      </ul>
+    </section>
+  </footer>
 </body>
 
 </html>
