@@ -1,0 +1,3 @@
+python -m pip install requests
+python -m pip install all-auth
+python -m pip install jwt

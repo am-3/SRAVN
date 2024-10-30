@@ -80,8 +80,8 @@ body {
 
 #submit-btn {
     border-radius: 5px;
-    background-color: rgb(218, 59, 59);
+    background-color: green;
 }
 #submit-btn:hover{
-    background-color: red;
+    background-color: rgb(114, 170, 30);
 }
