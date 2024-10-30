@@ -74,6 +74,132 @@ const data = [
             }
         ]
     },
+    {
+        venue: "Hall 4",
+        events: [
+            {
+                startDate: getLocalISODate(startTime),
+                endDate: getLocalISODate(startTime),
+                startTime: "13:00",
+                endTime: "15:00",
+                eventName: "cs517",
+                eventType: "Seminar"
+            },
+            {
+                startDate: getLocalISODate(startTime),
+                endDate: getLocalISODate(startTime),
+                startTime: "15:00",
+                endTime: "17:00",
+                eventName: "cs517",
+                eventType: "Meeting"
+            }
+        ]
+    },
+    {
+        venue: "Hall 5",
+        events: [
+            {
+                startDate: getLocalISODate(startTime),
+                endDate: getLocalISODate(startTime),
+                startTime: "13:00",
+                endTime: "15:00",
+                eventName: "cs517",
+                eventType: "Seminar"
+            },
+            {
+                startDate: getLocalISODate(startTime),
+                endDate: getLocalISODate(startTime),
+                startTime: "15:00",
+                endTime: "17:00",
+                eventName: "cs517",
+                eventType: "Meeting"
+            }
+        ]
+    },
+    {
+        venue: "Hall 6",
+        events: [
+            {
+                startDate: getLocalISODate(startTime),
+                endDate: getLocalISODate(startTime),
+                startTime: "13:00",
+                endTime: "15:00",
+                eventName: "cs517",
+                eventType: "Seminar"
+            },
+            {
+                startDate: getLocalISODate(startTime),
+                endDate: getLocalISODate(startTime),
+                startTime: "15:00",
+                endTime: "17:00",
+                eventName: "cs517",
+                eventType: "Meeting"
+            }
+        ]
+    },
+    {
+        venue: "Hall 7",
+        events: [
+            {
+                startDate: getLocalISODate(startTime),
+                endDate: getLocalISODate(startTime),
+                startTime: "13:00",
+                endTime: "15:00",
+                eventName: "cs517",
+                eventType: "Seminar"
+            },
+            {
+                startDate: getLocalISODate(startTime),
+                endDate: getLocalISODate(startTime),
+                startTime: "15:00",
+                endTime: "17:00",
+                eventName: "cs517",
+                eventType: "Meeting"
+            }
+        ]
+    },
+    {
+        venue: "Hall 8",
+        events: [
+            {
+                startDate: getLocalISODate(startTime),
+                endDate: getLocalISODate(startTime),
+                startTime: "13:00",
+                endTime: "15:00",
+                eventName: "cs517",
+                eventType: "Seminar"
+            },
+            {
+                startDate: getLocalISODate(startTime),
+                endDate: getLocalISODate(startTime),
+                startTime: "15:00",
+                endTime: "17:00",
+                eventName: "cs517",
+                eventType: "Meeting"
+            }
+        ]
+    },
+    {
+        venue: "Hall 9",
+        events: [
+            {
+                startDate: getLocalISODate(startTime),
+                endDate: getLocalISODate(startTime),
+                startTime: "11:00",
+                endTime: "15:00",
+                eventName: "cs517",
+                eventType: "Seminar"
+            },
+            {
+                startDate: getLocalISODate(startTime),
+                endDate: getLocalISODate(startTime),
+                startTime: "16:00",
+                endTime: "17:00",
+                eventName: "cs517",
+                eventType: "Meeting"
+            }
+        ]
+    },
 ];
 
 
@@ -221,7 +347,7 @@ const fillData = () => {
                 // Calculate start and end slot indices
                 const eventStart = new Date(`${event.startDate}T${event.startTime}`);
                 const startSlot = Math.floor((eventStart.getHours() * 60 + eventStart.getMinutes()) / 30);
-                const endSlot = Math.ceil((new Date(`${event.endDate}T${event.endTime}`).getTime() - eventStart.getTime()) / (30 * 60 * 1000)) + startSlot;
+                const endSlot = Math.ceil((new Date(`${event.endDate}T${event.endTime}`).getTime() - eventStart.getTime()) / (30 * 60 * 1000)) + startSlot + 1;
 
                 // Check if the slots are available
                 const isAvailable = venueSlots[columnIndex].slice(startSlot, endSlot).every(slot => slot === true);
@@ -241,11 +367,18 @@ const fillData = () => {
                 }
             } else {
                 // Only display empty slots if no current event
-                td.innerHTML = `<img src="../static/img/plus.svg" style="width: 15px; height: 15px;">`;
-                td.style.textAlign = "center";
-                td.addEventListener("click", () => {
-                    setTimeout(() => window.location.href = '/form', 100);
-                });
+                const startSlot = Math.floor((currentTime.getHours() * 60 + currentTime.getMinutes()) / 30);
+
+                if (venueSlots[columnIndex][startSlot]) {
+                    td.innerHTML = `<img src="../static/img/plus.svg" style="width: 15px; height: 15px;">`;
+                    td.style.textAlign = "center";
+                    td.addEventListener("click", () => {
+                        setTimeout(() => window.location.href = '/form', 100);
+                    });
+                }
+                else{
+                    td.style.display='none';
+                }
             }
 
             tr.appendChild(td);
@@ -258,7 +391,10 @@ const fillData = () => {
         // Increment time by 30 minutes
         currentTime.setMinutes(currentTime.getMinutes() + 30);
     }
+    console.log(venueSlots);
+
 };
+
 
 // Helper function to get background color based on event type
 const getEventColor = (type) => {
