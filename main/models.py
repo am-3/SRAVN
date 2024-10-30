@@ -7,7 +7,7 @@ class eventID(models.Model):
     purpose = models.TextField()
 
 class venue_details(models.Model):
-    venue_room = models.IntegerField(primary_key=True)
+    venue_room = models.CharField(max_length=5, primary_key=True)
     venue_details = models.TextField()
 
 class event_details(models.Model):
@@ -31,13 +31,18 @@ class event_coordinators_details(models.Model):
 
 class event_sanction(models.Model):
     event_id = models.ForeignKey(eventID, on_delete=models.CASCADE)
-    sanction_letter = models.FileField()
+    sanction_letter = models.FileField(upload_to ='uploads/% Y/% m/% d/')
 
 class event_status(models.Model):
     event_id = models.ForeignKey(eventID, on_delete=models.CASCADE)
-    approved = models.BooleanField()
+    approved = models.IntegerField()
     finished = models.BooleanField()
 
 class event_venue(models.Model):
     event_id = models.ForeignKey(eventID, on_delete=models.CASCADE)
     venue_room = models.ForeignKey(venue_details, on_delete=models.CASCADE)
+
+class user_event_form_files(models.Model):
+    user_email = models.EmailField()
+    event_id = models.ForeignKey(eventID, on_delete=models.CASCADE)
+    form_svg = models.FileField()

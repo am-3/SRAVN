@@ -1,4 +1,4 @@
-body {
+#eventForm {
     font-family: Arial, sans-serif;
     background-color: #f1f1f1;
 }
@@ -98,7 +98,8 @@ input[type="submit"]:hover {
 
 /* Style for "Add Hall" and "Add Date" buttons */
 #addHall,
-#addDate {
+#addDate,
+#submitBtn {
     background-color: #007BFF;
     color: #fff;
     border: none;
@@ -111,7 +112,8 @@ input[type="submit"]:hover {
 }
 
 #addHall:hover,
-#addDate:hover {
+#addDate:hover,
+#submitBtn:hover {
     background-color: #0056b3;
 }
 

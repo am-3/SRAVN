@@ -7,7 +7,7 @@ const MAX_DATE_LIMIT = 3; // Maximum allowed months from today
 
 const ROOM_NUMBERS_LIST = ["101", "102", "103", "104"];
 
-var ctr = 0;
+var hall_ctr = 0, date_ctr = 0;
 
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("eventForm");
@@ -29,12 +29,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     addHallButton.addEventListener("click", function () {
-        ctr = ctr + 1;
+        hall_ctr = hall_ctr + 1;
         const newHallSelect = hallTemplate.cloneNode(true);
         newHallSelect.removeAttribute("style"); // Make the cloned dropdown visible
         const elementInside = newHallSelect.querySelector('select');
-        elementInside.id = `hallNumber${ctr}`;
-        elementInside.setAttribute('name', `hallsChild${ctr}`);
+        elementInside.id = `hallNumber${hall_ctr}`;
+        elementInside.setAttribute('name', `hallsChild${hall_ctr}`);
     
         // Populate the cloned dropdown with options
         hallSelect.querySelectorAll("option").forEach(function (option) {
@@ -60,12 +60,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     addDateButton.addEventListener("click", function () {
+        date_ctr = date_ctr + 1;
         const dateGroup = document.createElement("div");
         dateGroup.classList.add("date-time-group");
 
         const cloneDateInput = dateInput.cloneNode(true);
         const cloneStartTimeSelect = startTimeSelect.cloneNode(true);
         const cloneEndTimeSelect = endTimeSelect.cloneNode(true);
+        cloneDateInput.id = `dateInput${date_ctr}`;
+        cloneDateInput.setAttribute('name', `dates${date_ctr}`);
+        cloneStartTimeSelect.id = `startTimeSelect${date_ctr}`;
+        cloneStartTimeSelect.setAttribute('name', `startTimes${date_ctr}`);
+        cloneEndTimeSelect.id = `endTimeSelect${date_ctr}`;
+        cloneEndTimeSelect.setAttribute('name', `endTimes${date_ctr}`);
 
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Remove Date";
@@ -281,13 +288,18 @@ function submitForm() {
     var formData = new FormData(document.getElementById('eventForm'));
     formData.append('halls', document.getElementById('hallSelect').value);
     formData.append('hallsChild', document.getElementById('hallNumber').value);
-    for (let i = 1; i <= ctr; i++){
+    for (let i = 1; i <= hall_ctr; i++){
         formData.append(`hallsChild${i}`, document.getElementById(`hallNumber${i}`).value);
     }
     formData.append('eventName', document.getElementById('eventName').value);
     formData.append('dates', document.getElementById('dateInput').value);
     formData.append('startTimes', document.getElementById('startTimeSelect').value);
     formData.append('endTimes', document.getElementById('endTimeSelect').value);
+    for (let i = 1; i <= date_ctr; i++){
+        formData.append(`dates${i}`, document.getElementById(`dateInput${i}`).value);
+        formData.append(`startTimes${i}`, document.getElementById(`startTimeSelect${i}`).value);
+        formData.append(`endTimes${i}`, document.getElementById(`endTimeSelect${i}`).value);
+    }
     formData.append('purpose', document.getElementById('purpose').value);
     formData.append('audioSystem', document.getElementById('audioSystem').value);
     formData.append('projector', document.getElementById('projector').value);
@@ -296,7 +308,8 @@ function submitForm() {
     formData.append('eventCoordinatorDept', document.getElementById('eventCoordinatorDept').value);
     formData.append('undertaking', document.getElementById('undertaking').value);
     formData.append('sanctionLetter', document.getElementById('sanctionLetter').value);
-    formData.append('Counter', ctr);
+    formData.append('hall_ctr', hall_ctr);
+    formData.append('date_ctr', date_ctr);
 
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/form');
@@ -307,6 +320,8 @@ function submitForm() {
         }
     };
     xhr.send(formData);
+    window.location.href = "/status";
+    document.getElementById('eventForm').reset();
 }
 
-document.getElementById('submit-btn').addEventListener('click', submitForm);
+document.getElementById('submitBtn').addEventListener('click', submitForm);

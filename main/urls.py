@@ -13,5 +13,7 @@ urlpatterns = [
     
     path('procedure', views.procedure),
     path('status', views.status),
-    path('about', views.about)
+    path('about', views.about),
+
+    path('logout', views.logout_view)
 ]
