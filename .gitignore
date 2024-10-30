@@ -1,6 +1,8 @@
 /git-credential-manager/
-sravn/__pycache__/
-main/__pycache__/
-main/migrations/__pycache__/
+migrations
+__pycache__
+venv
 client_secret_oauth.json
 client_secret_oauth.json:Zone.Identifier
+db.sqlite3
+.env*

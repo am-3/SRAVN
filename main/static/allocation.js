@@ -11,24 +11,62 @@ endTime.setHours(24, 0, 0, 0); // End at 6:00 PM
 // Sample event allocation data
 const allocation = [
     {
-        venue: "Hall 2",
-        startDate: "2023-12-10",
-        endDate: "2023-12-10",
-        startTime: "12:00",
-        endTime: "15:00",
+        venue: "Hall 1",
+        startDate: "2024-10-30",
+        endDate: "2024-10-30",
+        startTime: "09:00",
+        endTime: "11:30",
         eventName: "cs515",
-        eventType: "Seminar"
+        eventType: "Event Approved"
     },
     {
         venue: "Hall 2",
-        startDate: "2023-12-10",
-        endDate: "2023-12-10",
-        startTime: "12:00",
+        startDate: "2024-10-30",
+        endDate: "2024-10-30",
+        startTime: "10:30",
+        endTime: "12:00",
+        eventName: "cs516",
+        eventType: "Lecture"
+    },
+    {
+        venue: "Hall 3",
+        startDate: "2024-10-30",
+        endDate: "2024-10-30",
+        startTime: "13:00",
         endTime: "15:00",
-        eventName: "cs515",
+        eventName: "cs517",
         eventType: "Seminar"
     },
+    {
+        venue: "Hall 3",
+        startDate: "2024-10-30",
+        endDate: "2024-10-30",
+        startTime: "15:00",
+        endTime: "17:00",
+        eventName: "cs517",
+        eventType: "Lecture"
+    },
+    {
+        venue: "Hall 4",
+        startDate: "2024-10-30",
+        endDate: "2024-10-30",
+        startTime: "15:30",
+        endTime: "17:30",
+        eventName: "cs518",
+        eventType: "Meeting"
+    },
+    {
+        venue: "Hall 5",
+        startDate: "2024-10-30",
+        endDate: "2024-10-30",
+        startTime: "17:00",
+        endTime: "19:00",
+        eventName: "cs519",
+        eventType: "Event Pending"
+    },
 ];
+
+
 
 // Function to display a popup with event details
 function showPopup(eventDetails) {

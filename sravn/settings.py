@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,17 +23,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-o3o4=!!03&5dl$(je)2e8qq7(muq!ah_um3#hy7jgk&51bdlo0'
+SECRET_KEY = os.getenv('SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = [
-  'localhost',
-  '127.0.0.1',
-  '111.222.333.444',
-  'mywebsite.example']
-
+allowed_hosts = os.getenv("ALLOWED_HOSTS")
+# Split the string into a list of origins, handling the case where the variable is empty
+if allowed_hosts:
+    ALLOWED_HOSTS = allowed_hosts.split(',')
+else:
+    # Fallback to an empty list or default values if the environment variable is not set
+    ALLOWED_HOSTS = []
 
 # Application definition
 SITE_ID=2

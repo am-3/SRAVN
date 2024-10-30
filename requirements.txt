@@ -1,0 +1,9 @@
+asgiref
+Django
+django-cors-headers
+pytz
+sqlparse
+python-dotenv
+django-allauth
+requests
+jwt
