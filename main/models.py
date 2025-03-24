@@ -6,9 +6,15 @@ class eventID(models.Model):
     event_id = models.CharField(max_length=5, primary_key=True)
     purpose = models.TextField()
 
+    def __str__(self):
+        return f"{self.event_name} ({self.event_id})"
+
 class venue_details(models.Model):
     venue_room = models.CharField(max_length=5, primary_key=True)
     venue_details = models.TextField()
+
+    def __str__(self):
+        return self.venue_room
 
 class event_details(models.Model):
     event_id = models.ForeignKey(eventID, on_delete=models.CASCADE)
@@ -25,13 +31,17 @@ class event_coordinators(models.Model):
     coord_email = models.EmailField(primary_key=True)
 
 class event_coordinators_details(models.Model):
+    class CoordDept(models.TextChoices):
+        CSE = 'CSE', 'CSE'
+        ECE = 'ECE', 'ECE'
+
     event_id = models.ForeignKey(eventID, on_delete=models.CASCADE)
     coord_name = models.CharField(max_length=40)
-    coord_dept = models.TextChoices('CSE', 'ECE')
+    coord_dept = models.CharField(max_length=3, choices=CoordDept.choices)
 
 class event_sanction(models.Model):
     event_id = models.ForeignKey(eventID, on_delete=models.CASCADE)
-    sanction_letter = models.FileField(upload_to ='uploads/% Y/% m/% d/')
+    sanction_letter = models.FileField(upload_to='uploads/%Y/%m/%d/')
 
 class event_status(models.Model):
     event_id = models.ForeignKey(eventID, on_delete=models.CASCADE)
