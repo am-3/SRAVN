@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="p-8 bg-white rounded-xl shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-center">Sign in with Google</h2>
+        <a href="{% provider_login_url 'google' %}?next=/" 
+           class="flex items-center justify-center bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            <img src="https://developers.google.com/identity/images/g-logo.png" class="w-5 h-5 mr-2">
+            Continue with Google
+        </a>
+    </div>
+</div>
+{% endblock %}

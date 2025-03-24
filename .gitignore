@@ -6,3 +6,4 @@ client_secret_oauth.json
 client_secret_oauth.json:Zone.Identifier
 db.sqlite3
 .env*
+*.pyc
